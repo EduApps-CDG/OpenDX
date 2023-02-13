@@ -1,0 +1,214 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "libd3d9.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 53,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fPIC"
+				},
+				{
+					"fragment" : "-std=gnu++20"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "d3d9_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/home/eduardo/proj/OpenDX/./include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/eduardo/proj/OpenDX/./prod_include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/gtk-3.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/at-spi2-atk/2.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/at-spi-2.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/dbus-1.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/lib/x86_64-linux-gnu/dbus-1.0/include"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/gio-unix-2.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/cairo"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/pango-1.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/harfbuzz"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/fribidi"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/atk-1.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/pixman-1"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/uuid"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/freetype2"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/gdk-pixbuf-2.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/libpng16"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/libmount"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/blkid"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/include/glib-2.0"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "d3d9::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "d3d9",
+	"nameOnDisk" : "libd3d9.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "libs/d3d9/d3d9.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

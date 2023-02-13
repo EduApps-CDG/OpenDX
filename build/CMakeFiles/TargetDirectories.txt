@@ -1,0 +1,4 @@
+/home/eduardo/proj/OpenDX/build/CMakeFiles/d3d9.dir
+/home/eduardo/proj/OpenDX/build/CMakeFiles/dxdiag.dir
+/home/eduardo/proj/OpenDX/build/CMakeFiles/edit_cache.dir
+/home/eduardo/proj/OpenDX/build/CMakeFiles/rebuild_cache.dir

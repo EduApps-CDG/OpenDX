@@ -1,0 +1,287 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x0c\x00O\x00p\x00e\x00n\x00D\x00X)
+
+[CMake]
+Build Directory Count=1
+Current Build Directory Index-Host System=0
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=/home/eduardo/proj/OpenDX/build
+Build Type=Debug
+CMake Binary=/usr/bin/cmake
+CMake Executable=/usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+Runtime=Host System
+
+[ClangTidy]
+CheckSystemHeaders=true
+
+[Cppcheck]
+checkConfig=true
+checkPerformance=true
+checkPortability=true
+useSystemIncludes=true
+
+[CustomDefinesAndIncludes][ProjectPath0]
+Path=.
+parseAmbiguousAsCPP=true
+parserArguments=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++17
+parserArgumentsC=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c11
+parserArgumentsCuda=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++11
+parserArgumentsOpenCL=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -cl-std=CL1.1
+
+[CustomDefinesAndIncludes][ProjectPath0][Compiler]
+Name=GCC
+
+[CustomDefinesAndIncludes][ProjectPath0][Includes]
+1=/home/eduardo/proj/OpenDX/include
+2=/usr/include/gtk-3.0
+3=/home/eduardo/proj/OpenDX/prod_include
+
+[Filters]
+size=41
+
+[Filters][0]
+inclusive=0
+pattern=.*
+targets=3
+
+[Filters][1]
+inclusive=1
+pattern=.gitignore
+targets=1
+
+[Filters][10]
+inclusive=1
+pattern=.clang-format
+targets=1
+
+[Filters][11]
+inclusive=1
+pattern=.circleci
+targets=2
+
+[Filters][12]
+inclusive=0
+pattern=.git
+targets=2
+
+[Filters][13]
+inclusive=0
+pattern=CVS
+targets=2
+
+[Filters][14]
+inclusive=0
+pattern=.svn
+targets=2
+
+[Filters][15]
+inclusive=0
+pattern=_svn
+targets=2
+
+[Filters][16]
+inclusive=0
+pattern=SCCS
+targets=2
+
+[Filters][17]
+inclusive=0
+pattern=_darcs
+targets=2
+
+[Filters][18]
+inclusive=0
+pattern=.hg
+targets=2
+
+[Filters][19]
+inclusive=0
+pattern=.bzr
+targets=2
+
+[Filters][2]
+inclusive=1
+pattern=.gitmodules
+targets=1
+
+[Filters][20]
+inclusive=0
+pattern=__pycache__
+targets=2
+
+[Filters][21]
+inclusive=0
+pattern=*.o
+targets=1
+
+[Filters][22]
+inclusive=0
+pattern=*.a
+targets=1
+
+[Filters][23]
+inclusive=0
+pattern=*.so
+targets=1
+
+[Filters][24]
+inclusive=0
+pattern=*.so.*
+targets=1
+
+[Filters][25]
+inclusive=0
+pattern=*.obj
+targets=1
+
+[Filters][26]
+inclusive=0
+pattern=*.lib
+targets=1
+
+[Filters][27]
+inclusive=0
+pattern=*.dll
+targets=1
+
+[Filters][28]
+inclusive=0
+pattern=*.exp
+targets=1
+
+[Filters][29]
+inclusive=0
+pattern=*.pdb
+targets=1
+
+[Filters][3]
+inclusive=1
+pattern=.pre-commit-config.yaml
+targets=1
+
+[Filters][30]
+inclusive=0
+pattern=moc_*.cpp
+targets=1
+
+[Filters][31]
+inclusive=0
+pattern=*.moc
+targets=1
+
+[Filters][32]
+inclusive=0
+pattern=ui_*.h
+targets=1
+
+[Filters][33]
+inclusive=0
+pattern=*.qmlc
+targets=1
+
+[Filters][34]
+inclusive=0
+pattern=qrc_*.cpp
+targets=1
+
+[Filters][35]
+inclusive=0
+pattern=*~
+targets=1
+
+[Filters][36]
+inclusive=0
+pattern=*.orig
+targets=1
+
+[Filters][37]
+inclusive=0
+pattern=.*.kate-swp
+targets=1
+
+[Filters][38]
+inclusive=0
+pattern=.*.swp
+targets=1
+
+[Filters][39]
+inclusive=0
+pattern=*.pyc
+targets=1
+
+[Filters][4]
+inclusive=1
+pattern=.gitlab-ci.yml
+targets=1
+
+[Filters][40]
+inclusive=0
+pattern=*.pyo
+targets=1
+
+[Filters][5]
+inclusive=1
+pattern=.travis.yml
+targets=1
+
+[Filters][6]
+inclusive=1
+pattern=.editorconfig
+targets=1
+
+[Filters][7]
+inclusive=1
+pattern=.pep8
+targets=1
+
+[Filters][8]
+inclusive=1
+pattern=.prettierignore
+targets=1
+
+[Filters][9]
+inclusive=1
+pattern=.prettierrc*
+targets=1
+
+[Launch]
+Launch Configurations=Launch Configuration 0,Launch Configuration 1
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=dxdiag
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x02\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x0c\x00O\x00p\x00e\x00n\x00D\x00X\x00\x00\x00\x08\x00d\x003\x00d\x009\x00\x00\x00\x0b\x00\x00\x00\x00\x02\x00\x00\x00\x0c\x00O\x00p\x00e\x00n\x00D\x00X\x00\x00\x00\x0c\x00d\x00x\x00d\x00i\x00a\x00g)
+Dependency Action=Build
+EnvironmentGroup=
+Executable=file:///home/eduardo/proj/OpenDX
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Kill Before Executing Again=65536
+Project Target=OpenDX,dxdiag
+Use External Terminal=false
+Working Directory=
+isExecutable=false
+
+[Launch][Launch Configuration 1]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=dxdiag
+Type=Native Application
+
+[Launch][Launch Configuration 1][Data]
+Configured from ProjectItem=OpenDX,dxdiag
+Kill Before Executing Again=65536
+Project Target=OpenDX,dxdiag
+Working Directory=file:///home/eduardo/proj/OpenDX/build/
+isExecutable=false
+
+[Project]
+VersionControlSupport=kdevgit
