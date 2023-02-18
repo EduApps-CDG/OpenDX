@@ -1,5 +1,30 @@
-<h2>OpenDX - The Open Source Implementation of DirectX for Linux</h2>
+# OpenDX - The Open Source Implementation of DirectX for Linux
+[![CMake](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml/badge.svg)](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml)
 
 ![](./img/print.png)
 
-<p>Do you miss DirectX when playing games on Linux? Are you tired of relying on Wine or other compatibility layers for running games that rely on DirectX? OpenDX is here to change that. Our project aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators.</p><h3>Introducing the First Component: dxdiag</h3><p>We're proud to announce the first component of our project: a functional implementation of the DirectX Diagnostic Tool (dxdiag). This tool provides detailed information about the DirectX installation and capabilities of your Linux system, just like it does on Windows. With OpenDX, you can now check the compatibility of your Linux system with DirectX games and applications.</p><p><strong>Please note: Currently, dxdiag only works with one screen, but we are working on expanding its capabilities.</strong></p><h3>Improved Performance</h3><p>We believe that Linux should have a native implementation of DirectX, which will provide improved performance and compatibility compared to compatibility layers such as Wine. Although the project is still in development and we have a long way to go, we are committed to bringing you the best possible experience when playing DirectX games on Linux.</p><h3>Join the OpenDX Community</h3><p>We need your help to make OpenDX a success. If you're a developer, you can contribute to the project by fixing bugs, adding new features, and improving performance. If you're not a developer, you can still help by giving us feedback, testing the software, and spreading the word about OpenDX.</p><h3>Give us a Star and Contribute</h3><p>Please show your support for OpenDX by giving us a star on GitHub and spreading the word about the project. We believe that together, we can bring the best of DirectX to Linux and provide an improved gaming experience for everyone.</p><p>Join us on our journey to bring DirectX to Linux!</p>
+Do you miss DirectX when playing games on Linux?
+Are you tired of relying on Wine or other compatibility layers for running games that rely on DirectX?
+**OpenDX is here to change that!**
+Our project aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators.
+
+## Introducing the First Component: dxdiag
+We're proud to announce the first component of our project: a functional implementation of the DirectX Diagnostic Tool (dxdiag).
+This tool provides detailed information about the DirectX installation and capabilities of your Linux system, just like it does on Windows.
+With OpenDX, you can now check the compatibility of your Linux system with DirectX games and applications.
+
+**Please note: Currently, dxdiag only works with one screen, but we are working on expanding its capabilities.**
+
+## Improved Performance
+We believe that Linux should have a native implementation of DirectX, which will provide improved performance and compatibility compared to compatibility layers such as Wine.
+Although the project is still in development and we have a long way to go, we are committed to bringing you the best possible experience when playing DirectX games on Linux.
+
+## Join the OpenDX Community
+We need your help to make OpenDX a success.
+If you're a developer, you can contribute to the project by fixing bugs, adding new features, and improving performance.
+If you're not a developer, you can still help by giving us feedback, testing the software, and spreading the word about OpenDX.
+
+## Give us a Star and Contribute
+Please show your support for OpenDX by giving us a star on GitHub and spreading the word about the project. We believe that together, we can bring the best of DirectX to Linux and provide an improved gaming experience for everyone.
+
+Join us on our journey to bring DirectX to Linux!
