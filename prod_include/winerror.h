@@ -1,4 +1,4 @@
 #pragma once
 #include <windows.h>
 
-#define HRESULT LONG;
+#define HRESULT LONG

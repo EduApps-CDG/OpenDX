@@ -7,7 +7,7 @@
 //windows types:
 #define WCHAR wchar_t
 #define ULONG unsigned long
-#define LONG long;
+#define LONG long
 
 #include <stdarg.h>
 #include <windef.h>
