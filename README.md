@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # OpenDX - The Open Source Implementation of DirectX for Linux
 [![CMake](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml/badge.svg)](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml)
 
