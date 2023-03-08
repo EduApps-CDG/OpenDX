@@ -249,7 +249,7 @@ pattern=.prettierrc*
 targets=1
 
 [Launch]
-Launch Configurations=Launch Configuration 0,Launch Configuration 1
+Launch Configurations=Launch Configuration 0,Launch Configuration 2
 
 [Launch][Launch Configuration 0]
 Configured Launch Modes=execute
@@ -270,17 +270,23 @@ Use External Terminal=false
 Working Directory=
 isExecutable=false
 
-[Launch][Launch Configuration 1]
+[Launch][Launch Configuration 2]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=dxdiag
+Name=sample
 Type=Native Application
 
-[Launch][Launch Configuration 1][Data]
-Configured from ProjectItem=OpenDX,dxdiag
-Kill Before Executing Again=65536
-Project Target=OpenDX,dxdiag
-Working Directory=file:///home/eduardo/proj/OpenDX/build/
+[Launch][Launch Configuration 2][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x03\x00\x00\x00\x0c\x00O\x00p\x00e\x00n\x00D\x00X\x00\x00\x00\n\x00t\x00e\x00s\x00t\x00s\x00\x00\x00\x0c\x00s\x00a\x00m\x00p\x00l\x00e)
+Dependency Action=Build
+EnvironmentGroup=
+Executable=file:///home/eduardo/proj/OpenDX
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Kill Before Executing Again=4194304
+Project Target=OpenDX,tests,sample
+Use External Terminal=false
+Working Directory=
 isExecutable=false
 
 [Project]

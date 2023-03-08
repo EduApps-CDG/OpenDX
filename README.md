@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OpenDX - The Open Source Implementation of DirectX for Linux
 [![CMake](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml/badge.svg)](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml)
 
@@ -7,6 +8,9 @@ Do you miss DirectX when playing games on Linux?
 Are you tired of relying on Wine or other compatibility layers for running games that rely on DirectX?
 **OpenDX is here to change that!**
 Our project aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators.
+
+### What OpenDX is not
+OpenDX it's not intended to be used as a compatibility layer for running Windows games on Linux. It's meant to be used on Linux games that rely on DirectX. We are not planning to implement the Windows API, but we are planning to implement the DirectX API.
 
 ## Introducing the First Component: dxdiag
 We're proud to announce the first component of our project: a functional implementation of the DirectX Diagnostic Tool (dxdiag).
@@ -18,6 +22,9 @@ With OpenDX, you can now check the compatibility of your Linux system with Direc
 ## Improved Performance
 We believe that Linux should have a native implementation of DirectX, which will provide improved performance and compatibility compared to compatibility layers such as Wine.
 Although the project is still in development and we have a long way to go, we are committed to bringing you the best possible experience when playing DirectX games on Linux.
+
+Here's a list of what OpenDX does better than Windows:
+* dxdiag: Even on 11th gen Intel CPUs, dxdiag takes some time to open on Windows. On OpenDX, it opens instantly. Also, in the System tab, OpenDX shows the correct date and time, while Windows shows the date and time when dxdiag was opened (*lol*).
 
 ## Join the OpenDX Community
 We need your help to make OpenDX a success.

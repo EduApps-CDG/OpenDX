@@ -46,7 +46,7 @@ find_package(PkgConfig REQUIRED)
 #d3d9.so:
 add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
 
-# dxdiag:
+#dxdiag:
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 
@@ -56,3 +56,7 @@ link_directories(${GTK3_LIBRARY_DIRS})
 add_executable(dxdiag tools/dxdiag/main.cpp)
 target_link_libraries(dxdiag ${GTK3_LIBRARIES})
 target_link_libraries(dxdiag d3d9)
+
+
+#add ./tests/CMakeLists.txt
+add_subdirectory(tests)
