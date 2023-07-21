@@ -1,0 +1,6 @@
+{
+    "mesonbuild.configureOnOpen": true,
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "clang-diagnostic-pragma-once-outside-header"
+    ]
+}

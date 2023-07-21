@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        //cmake then make in build folder
+        {
+            "name": "dxdiag",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/dxdiag",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+
+        //sample (also in build folder)
+        {
+            "name": "sample",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/tests/sample",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ],
+    "version": "2.0.0"
+}

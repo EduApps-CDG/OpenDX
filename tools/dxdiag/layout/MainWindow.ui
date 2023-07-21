@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkWindow" id="main_window">
+  <property name="default-width">720</property>
+  <property name="default-height">480</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkNotebook">
+            <property name="vexpand">1</property>
+            <property name="focusable">1</property>
+            <child>
+              <object class="GtkNotebookPage">
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="margin-start">5</property>
+                    <property name="margin-end">5</property>
+                    <property name="margin-top">5</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="1">This tool reports detailed information about the DirectX components and drivers installed on your system.
+
+
+If you know what area is causing the problem, click on the apropriate tab above. Otherwise, you can use the &quot;Next Page&quot; button below to visit each page in sequence.
+
+</property>
+                        <property name="wrap">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="vexpand">1</property>
+                        <property name="child">
+                          <object class="GtkScrolledWindow">
+                            <property name="focusable">1</property>
+                            <property name="child">
+                              <object class="GtkViewport">
+                                <property name="child">
+                                  <object class="GtkGrid">
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="row-spacing">2</property>
+                                    <property name="column-spacing">5</property>
+                                    <property name="column-homogeneous">1</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Current Date/Time:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="date_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Nullsday, Nul 00, 0000, 0:00:00 AM</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">0</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Computer Name:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="pc_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">null</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">1</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Operating System:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">2</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="os_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Nullbuntu 64-bit (23.04, kernel 0)</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">2</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Language:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="lang_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Null (Regional Setting: Null)</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">3</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">System Manufacturer:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">4</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="pcman_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Unknown</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">4</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">System Model:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="pcmod_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Unknown</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">5</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">BIOS:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">6</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="bios_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Null (0)</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">6</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Processor:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">7</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="cpu_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">Intel(R) Celeron(TM) N0000 CPU @ 0GHz (0 CPUs), ~(0GHz)</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">7</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Memory:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">8</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="ram_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">0MB RAM</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">8</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">Page/Swap File:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">9</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="swap_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">0MB used, 0MB available</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">9</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">DirectX Version:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">10</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="dx_val">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">DirectX 0</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">10</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="1">OpenDX Version:</property>
+                                        <property name="justify">right</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">0</property>
+                                          <property name="row">11</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="1">0.0.0 (About the OpenDX Project)</property>
+                                        <property name="use-markup">1</property>
+                                        <property name="selectable">1</property>
+                                        <layout>
+                                          <property name="column">1</property>
+                                          <property name="row">11</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </property>
+                          </object>
+                        </property>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">System Information</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+                <property name="tab">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1" context="tab_system">System</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-start">5</property>
+            <property name="margin-end">5</property>
+            <property name="margin-top">5</property>
+            <property name="margin-bottom">5</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="1" context="help">Help</property>
+                <property name="focusable">1</property>
+                <property name="receives-default">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkOverlay">
+                <property name="hexpand">1</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="1" context="next_page">Next Page</property>
+                <property name="focusable">1</property>
+                <property name="receives-default">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="1" context="save_all_information">Save All Information...</property>
+                <property name="focusable">1</property>
+                <property name="receives-default">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="1" context="exit">Exit</property>
+                <property name="focusable">1</property>
+                <property name="receives-default">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>

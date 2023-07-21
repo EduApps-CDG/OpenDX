@@ -1,0 +1,6 @@
+#pragma once
+
+#define DEBUG false
+
+//PREPROCESSING ONLY!!!
+#define PROJECT_SOURCE_DIR "@PROJECT_SOURCE_DIR@/"
