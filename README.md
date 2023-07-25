@@ -1,8 +1,9 @@
 <div align=center>
-  <img src="./img/logo.png" width=260>
-  <br>
-  
-  # OpenDX
+  <h1>
+    OpenDX
+    <br>
+    <img src="./img/logo.png" width=260 alt="Bring DirectX to Linux!">
+  </h1>
   <i>The Open Source DirectX alternative for Linux.</i>
   
   **Compile:** `./build.sh && ./run.sh`
@@ -10,13 +11,13 @@
   [![Build Status](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml/badge.svg)](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml)
 </div>
 
-## WTF is this?
+## What is this?
 Do you miss DirectX when playing games on Linux?
 Are you tired of relying on Wine or other compatibility layers for running games that rely on DirectX?
 **OpenDX is here to change that!**
 Our project aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators.
 
-### What OpenDX is not
+### What OpenDX is <b>NOT</b>
 OpenDX it's not intended to be used as a compatibility layer for running Windows games on Linux. It's meant to be used on Linux games that rely on DirectX. We are not planning to implement the Windows API, but we are planning to implement the DirectX API.
 
 ## Introducing the First Component: dxdiag
