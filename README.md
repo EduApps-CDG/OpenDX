@@ -12,13 +12,7 @@
 </div>
 
 ## What is this?
-Do you miss DirectX when playing games on Linux?
-Are you tired of relying on Wine or other compatibility layers for running games that rely on DirectX?
-**OpenDX is here to change that!**
-Our project aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators.
-
-### What OpenDX is <b>NOT</b>
-OpenDX it's not intended to be used as a compatibility layer for running Windows games on Linux. It's meant to be used on Linux games that rely on DirectX. We are not planning to implement the Windows API, but we are planning to implement the DirectX API.
+OpenDX is a project that aims to provide a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators. This will allow Linux users to run DirectX games and applications with improved performance and compatibility.
 
 ## Introducing the First Component: dxdiag
 <div align=center>
