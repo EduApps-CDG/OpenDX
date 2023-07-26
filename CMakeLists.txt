@@ -43,7 +43,15 @@ include_directories(./prod_include)
 
 find_package(PkgConfig REQUIRED)
 
-#d3d9.so:
+#libdsetup.so:
+
+#resolve wildcards and add "dsetup.cpp" as the first of the list
+set(DSETUP_CPP libs/dsetup/dsetup.cpp)
+file(GLOB_RECURSE DSETUP_CPP libs/dsetup/fun/*.cpp)
+
+add_library(dsetup SHARED ${DSETUP_CPP})
+
+#libd3d9.so:
 add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
 
 #dxdiag:
@@ -55,6 +63,7 @@ link_directories(${GTK4_LIBRARY_DIRS})
 
 add_executable(dxdiag tools/dxdiag/main.cpp)
 target_link_libraries(dxdiag ${GTK4_LIBRARIES})
+target_link_libraries(dxdiag dsetup)
 target_link_libraries(dxdiag d3d9)
 
 
