@@ -43,9 +43,17 @@ include_directories(./prod_include)
 
 find_package(PkgConfig REQUIRED)
 
-#libdsetup.so:
+#dependency
+include_directories(${GTK4_INCLUDE_DIRS})
+link_directories(${GTK4_LIBRARY_DIRS})
 
-#resolve wildcards and add "dsetup.cpp" as the first of the list
+#libopendx.so:
+set(OPENDX_CPP libs/opendx/opendx.cpp)
+#file(GLOB_RECURSE OPENDX_CPP libs/opendx/fun/*.cpp)
+add_library(opendx SHARED ${OPENDX_CPP})
+target_link_libraries(opendx ${GTK4_LIBRARIES})
+
+#libdsetup.so:
 set(DSETUP_CPP libs/dsetup/dsetup.cpp)
 file(GLOB_RECURSE DSETUP_CPP libs/dsetup/fun/*.cpp)
 
@@ -56,10 +64,6 @@ add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
 
 #dxdiag:
 pkg_check_modules(GTK4 REQUIRED gtk4)
-
-
-include_directories(${GTK4_INCLUDE_DIRS})
-link_directories(${GTK4_LIBRARY_DIRS})
 
 add_executable(dxdiag tools/dxdiag/main.cpp)
 target_link_libraries(dxdiag ${GTK4_LIBRARIES})

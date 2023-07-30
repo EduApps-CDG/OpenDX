@@ -8,5 +8,5 @@ include_directories(${GTK4_INCLUDE_DIRS})
 link_directories(${GTK4_LIBRARY_DIRS})
 
 add_executable(sample basic_window.cpp)
-target_link_libraries(sample ${GTK4_LIBRARIES})
+target_link_libraries(sample opendx)
 target_link_libraries(sample d3d9)

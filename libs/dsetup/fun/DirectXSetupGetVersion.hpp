@@ -1,3 +1,4 @@
+#pragma onnce
 #include <windows.h>
 
 /**

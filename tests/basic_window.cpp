@@ -4,6 +4,8 @@
  *
  * Code that doesn't work is also commented.
  */
+#include <opendx.h>
+#include <winuser.h>
 #include <d3d9.h>
 #include <string>
 #include <iostream>
@@ -12,12 +14,21 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
     // Create the window
-    //HWND hWnd = CreateWindow("DX9 Window", "DX9 Window", 0, 0, 0, 640, 480, NULL, NULL, hInstance, NULL);
+    HWND hWnd = CreateWindow(
+        "DX9 Window", "DX9 Window",
+        WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+        0, 0, 640, 480, NULL, NULL, hInstance, NULL
+    );
 
     // Create the Direct3D device
     LPDIRECT3D9 pD3D = Direct3DCreate9(D3D_SDK_VERSION);
     LPDIRECT3DDEVICE9 pDevice = NULL;
     D3DPRESENT_PARAMETERS pp;
+
+
+    //wait 5 seconds (Linux):
+    sleep(5);
+
     /*ZeroMemory(&pp, sizeof(pp));
     pp.Windowed = TRUE;
     pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
@@ -49,18 +60,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     return 0;
 }
 
-//Linux's main
+//Linux's main or MinGW's main:
 int main(int argc, char* argv[]) {
-    char* cmdline = (char*) malloc(sizeof(char));
-    cmdline[0] = '\0';
+    //OpenDX transforms argc and argv to WinMain params
+    //then calls WinMain. You can also initialize OpenDX
+    //without params and insert your code right here if
+    //you are using MinGW.
+    OpenDX odx(argc, argv,WinMain); //or OpenDX odx();
 
-    for (int i = 0; i < argc; i++) {
-        cmdline = (char*) realloc(cmdline, strlen(cmdline) + strlen(argv[i]) + 2);
-        strcat(cmdline, argv[i]);
-        if (i < argc - 1) {
-            strcat(cmdline, " ");
-        }
-    }
-
-    return WinMain(nullptr, nullptr, cmdline, 0);
+    return odx.getReturnCode(); // 0 if WinMain is not passed.
 }

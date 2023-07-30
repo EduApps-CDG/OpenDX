@@ -21,10 +21,13 @@
 #define TCHAR char
 #define UINT unsigned int
 #define ULONG unsigned long
-#define UlONG_PTR unsigned long
+#define ULONG_PTR unsigned long
 #define LONG long
 #define BOOL bool
 #define BYTE unsigned char
+#define LPCTSTR const char*
+#define LPCSTR const char*
+#define LPCWSTR const char*
 
 #include <stdarg.h>
 #include <windef.h>
