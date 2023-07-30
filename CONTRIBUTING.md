@@ -2,21 +2,25 @@
 This guide shows how to prepare your environment to contribute for OpenDX.
 
 ## Dependencies
-First, install these dependencies (older versions might work, but it's not guaranteed).
+`./build.sh` detect and try to install the dependencies for you, but if you want to do it manually, here is the list of dependencies:
 
 | Dependency | Version |
 |:-|-:|
-|[`cmake`](https://packages.ubuntu.com/kinetic/cmake)|`3.25.1`|
-|[`libgtk-4-dev`](https://packages.ubuntu.com/kinetic/libgtk-4-dev)|`4.10.1`|
+|[`gcc`](https://packages.ubuntu.com/lunar/gcc)|`12.2.0`|
+|[`cmake`](https://packages.ubuntu.com/lunar/cmake)|`3.25.1`|
+|[`make`](https://packages.ubuntu.com/lunar/make)|`4.3`|
+|[`libgtk-4-dev`](https://packages.ubuntu.com/lunar/libgtk-4-dev)|`4.10.1`|
 
 
 ## Building and running
 These are the same universal steps for cmake:
 
 ```sh
-cd build
-cmake ..
-
-# run dxdiag
-./dxdiag
+./build.sh
+```
+----
+```sh
+cd build #for running
+./dxdiag #runs dxdiag
+./tests/sample #runs test sample
 ```
