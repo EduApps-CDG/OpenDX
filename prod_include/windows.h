@@ -32,7 +32,7 @@
 #include <stdarg.h>
 #include <windef.h>
 #include <winnt.h>
-#include <gtk/gtk.h>
+//#include <gtk/gtk.h>
 
 #define LPCTSTR const char*
 #define DWORD unsigned long

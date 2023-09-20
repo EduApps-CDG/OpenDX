@@ -12,6 +12,17 @@ cmake_minimum_required(VERSION 3.22)
 project(OpenDX)
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
 
+#Package
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/root)
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME "opendx")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
+set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
+
+include(CPack)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/root/ DESTINATION /)
+
 find_package(PkgConfig)
 pkg_check_modules(PC_ QUIET )
 set(_DEFINITIONS ${PC__CFLAGS_OTHER})
@@ -33,6 +44,9 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(  DEFAULT_MSG
                                   _LIBRARY _INCLUDE_DIR)
 mark_as_advanced(_INCLUDE_DIR _LIBRARY )
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/root/usr/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/root/usr/lib")
 
 #base include
 include_directories(./include)

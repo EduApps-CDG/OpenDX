@@ -1,3 +1,4 @@
+include/config.hpp
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -12,4 +13,6 @@ _deps
 build
 .kdev4
 OpenDX.kdev4
+opendx.tar
+opendx.deb
 !build/.no-delete
