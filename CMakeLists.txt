@@ -19,6 +19,7 @@ set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
 set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
 
 include(CPack)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/root/ DESTINATION /)
