@@ -1,5 +1,5 @@
 # Contributing
-This guide shows how to prepare your environment to contribute for OpenDX.
+This guide shows how to prepare your environment to contribute for OpenDX's DirectX reimplementation.
 
 ## Dependencies
 `./build.sh` detect and try to install the dependencies for you, but if you want to do it manually, here is the list of dependencies:
@@ -15,12 +15,17 @@ This guide shows how to prepare your environment to contribute for OpenDX.
 ## Building and running
 These are the same universal steps for cmake:
 
+**Build:**
 ```sh
 ./build.sh
 ```
-----
+
+**Run:**
 ```sh
-cd build #for running
-./dxdiag #runs dxdiag
-./tests/sample #runs test sample
+#setups the terminal for better running.
+PATH=$PATH:./build/root/usr/bin
+
+#commands available to run:
+dxdiag
+sample
 ```
