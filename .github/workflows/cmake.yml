@@ -24,7 +24,7 @@ jobs:
       run: ./build.sh
 
     - name: Packing into a tar and a deb
-      run: ./pack.sh; cat /home/runner/work/OpenDX/OpenDX/build/_CPack_Packages/Linux/DEB/PreinstallOutput.log
+      run: ./pack.sh #cat /home/runner/work/OpenDX/OpenDX/build/_CPack_Packages/Linux/DEB/PreinstallOutput.log
 
     - name: Test
       working-directory: ${{github.workspace}}/build
