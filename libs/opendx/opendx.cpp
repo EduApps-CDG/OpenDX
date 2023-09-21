@@ -51,6 +51,38 @@ BOOL ShowWindow(HWND window, int nCmdShow) {
     return r;
 }
 
+BOOL DestroyWindow(HWND window) {
+    gtk_window_destroy(GTK_WINDOW(window));
+    return true;
+}
+
+BOOL GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax) {
+    BOOL r = g_main_context_pending(NULL);
+
+
+   //i know this is wrong, but i need to get the sample working
+    if (r) {
+        g_main_context_iteration(NULL, true);
+    } else {
+        lpMsg->message = WM_QUIT;
+    }
+
+    return r;
+}
+
+BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg) {
+    BOOL r = g_main_context_pending(NULL);
+   
+   //i know this is wrong, but i need to get the sample working
+    if (r) {
+        g_main_context_iteration(NULL, true);
+    } else {
+        lpMsg->message = WM_QUIT;
+    }
+
+    return r;
+}
+
 /*
  * OpenDX utility class
  */

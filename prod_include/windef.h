@@ -1,10 +1,10 @@
 #pragma once
+#include <windows.h>
 
-#define WINAPI __stdcall
-#define HINSTANCE void*
-#define LPSTR char*
-#define LPCTSTR const char*
-#define HWND GtkWidget
-#define HMENU void*
-
-#define DWORD unsigned long
+/*
+ * ref: https://learn.microsoft.com/en-us/windows/win32/api/windef/ns-windef-point
+ */
+typedef struct tagPOINT {
+  LONG x;
+  LONG y;
+} POINT, *PPOINT, *NPPOINT, *LPPOINT;

@@ -25,37 +25,33 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     LPDIRECT3DDEVICE9 pDevice = NULL;
     D3DPRESENT_PARAMETERS pp;
 
-
-    //wait 5 seconds (Linux):
-    sleep(5);
-
-    /*ZeroMemory(&pp, sizeof(pp));
+    //ZeroMemory(&pp, sizeof(pp));
     pp.Windowed = TRUE;
     pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &pp, &pDevice);
+    //pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &pp, &pDevice);
 
     // Enter the message loop
     MSG msg;
-    ZeroMemory(&msg, sizeof(msg));
+    //ZeroMemory(&msg, sizeof(msg));
     while (msg.message != WM_QUIT) {
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-        else {
+            //TranslateMessage(&msg);
+            //DispatchMessage(&msg);
+        } else {
             // Render the scene
-            pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
+            /*pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
             pDevice->BeginScene();
             pDevice->EndScene();
-            pDevice->Present(NULL, NULL, NULL, NULL);
+            pDevice->Present(NULL, NULL, NULL, NULL);*/
         }
     }
 
+    sleep(5);
     // Clean up
-    pDevice->Release();
-    pD3D->Release();
+    //pDevice->Release(); //causes a segfault
+    //pD3D->Release();
     DestroyWindow(hWnd);
-    return msg.wParam;*/
+    //return msg.wParam;
 
     return 0;
 }

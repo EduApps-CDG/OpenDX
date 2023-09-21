@@ -4,6 +4,22 @@
 #pragma once
 #include <windows.h>
 
+/*
+ * MSG
+ * ref: https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-msg
+ */
+typedef struct tagMSG {
+  HWND   hwnd;
+  UINT   message;
+  WPARAM wParam;
+  LPARAM lParam;
+  DWORD  time;
+  POINT  pt;
+  DWORD  lPrivate;
+} MSG, *PMSG, *NPMSG, *LPMSG;
+
+#define WM_QUIT 0x0012
+
 /**
  * Extended Window Styles
  * ref: https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles
@@ -84,8 +100,14 @@ HWND CreateWindowExA(
 );
 
 BOOL ShowWindow(HWND window, int nCmdShow);
+BOOL DestroyWindow(HWND window);
 
+BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg);
 #define CreateWindowExW CreateWindowExA
+#define PeekMessageW PeekMessageA
+#define PM_NOREMOVE 0x0000
+#define PM_REMOVE 0x0001
+#define PM_NOYIELD 0x0002
 
 // https://www.codeproject.com/Answers/136442/Differences-Between-CreateWindow-and-CreateWindowE#answer3
 #define CreateWindowA(lpClassName, lpWindowName, dwStyle, x, y, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam)\
@@ -96,6 +118,8 @@ CreateWindowExW(0L, lpClassName, lpWindowName, dwStyle, x, y, nWidth, nHeight, h
 //TODO: check if it's needed in a linux environment
 #if UNICODE
     #define CreateWindow CreateWindowW
+    #define PeekMessage PeekMessageW
 #else
     #define CreateWindow CreateWindowA
+    #define PeekMessage PeekMessageA
 #endif

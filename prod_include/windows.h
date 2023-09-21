@@ -15,6 +15,8 @@
 #if defined(__GNUC__)
 	#define __stdcall __attribute__((stdcall))
 #endif
+#define WINAPI __stdcall
+#define __int64 long long
 
 //windows types:
 #define WCHAR wchar_t
@@ -25,8 +27,9 @@
 #define LONG long
 #define BOOL bool
 #define BYTE unsigned char
-#define LPCTSTR const char*
+#define LPSTR char*
 #define LPCSTR const char*
+#define LPCTSTR const char*
 #define LPCWSTR const char*
 
 #include <stdarg.h>
@@ -34,9 +37,12 @@
 #include <winnt.h>
 //#include <gtk/gtk.h>
 
-#define LPCTSTR const char*
 #define DWORD unsigned long
-#define HWND void*
+#define HWND GtkWidget*
 #define HMENU void*
 #define HINSTANCE void*
 #define LPVOID void*
+
+#define LONG_PTR __int64
+#define LPARAM LONG_PTR
+#define WPARAM unsigned __int64
