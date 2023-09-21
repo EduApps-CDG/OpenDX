@@ -1,7 +1,9 @@
+#include "opendx.hpp"
 #include <windows.h>
 #include <gtk/gtk.h>
 #include <winuser.h>
 #include <opendx.h>
+#include <iostream>
 
 /**
  * @brief Create a Window 
@@ -22,6 +24,10 @@ HWND CreateWindowExA(
     HINSTANCE instance, //optional (Windows ignores it)
     LPVOID param //optional
 ) {
+    #ifdef DEBUG
+        std::cout << "libopendx.so: CreateWindowExA()" << std::endl;
+    #endif
+
     GtkWidget* window = gtk_window_new();
 
     if (title != nullptr) {

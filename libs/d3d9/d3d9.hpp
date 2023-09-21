@@ -1,4 +1,5 @@
 #pragma once
+#include <config.hpp>
 #include <windows.h>
 #include "d3d9helper.hpp"
 #include "d3d9types.hpp"

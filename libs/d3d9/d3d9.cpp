@@ -12,6 +12,10 @@
 
 
 IDirect3D9::IDirect3D9 (UINT SDKVersion) {
+	#ifdef DEBUG
+		std::cout << "libd3d9.so: IDirect3D9::IDirect3D9()" << std::endl;
+	#endif
+
 	//Create connection with DRM
 	int fd = open("/dev/dri/card0", O_RDWR, 0); //DirectX automatically selects the first GPU
 
@@ -20,36 +24,52 @@ IDirect3D9::IDirect3D9 (UINT SDKVersion) {
 			<< "ODX ERROR: Failed to open /dev/dri/card0. Please check if you have the proper permissions to access the device." << std::endl
 			<< "Direct3DCreate9 fails and returns NULL.\033[0;0m" << std::endl
 			<< std::endl;
+
 		close(fd);
 		return;
 	}
 
 	//check if the device is Hardware or Software (Does DirectX have this check?)
-    unsigned int gpuType;
-	
+    drm_get_cap gpuType;
     int ioctlResult = ioctl(fd, DRM_IOCTL_GET_CAP, &gpuType);
+
     if (ioctlResult != 0) {
         std::cerr << "\033[1;31m"
 			<< "ODX ERROR: Failed to get device info" << std::endl
 			<< "Direct3DCreate9 fails and returns NULL.\033[0;0m" << std::endl
 			<< std::endl;
+
         close(fd);
+		perror("ioctl");
         return;
     }
 
-	std::cout << "\033[1;32m" //GREEN BOLD
-		<< "ODX INFO: Device is " << (gpuType == DRM_CAP_DUMB_BUFFER ? "Software" : "Hardware") << std::endl
-		<< "\033[0;0m" << std::endl;
+
+	#ifdef DEBUG
+		std::cout << "\033[1;32m" //GREEN BOLD
+			<< "ODX INFO: Device is " << (gpuType.value == DRM_CAP_DUMB_BUFFER ? "Software" : "Hardware") << std::endl
+			<< "\033[0;0m" << std::endl;
+	#endif
+
+	D3DDEVTYPE deviceType = D3DDEVTYPE::D3DDEVTYPE_NULLREF;
+
+	if (gpuType.value == DRM_CAP_DUMB_BUFFER) {
+		deviceType = D3DDEVTYPE::D3DDEVTYPE_SW;
+	} else {
+		deviceType = D3DDEVTYPE::D3DDEVTYPE_HAL;
+	}
 
 	IDirect3DDevice9* device;
 	this->CreateDevice(
 		D3DADAPTER_DEFAULT,
-		D3DDEVTYPE::D3DDEVTYPE_SW, // TODO
+		deviceType,
 		NULL, // TODO
 		NULL, // TODO
 		NULL, // TODO
 		&device
 	);
+
+	close(fd);
 }
 
 
