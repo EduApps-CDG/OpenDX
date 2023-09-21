@@ -21,6 +21,14 @@ set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux
 set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
 
+
+#base include
+include_directories(./include)
+configure_file(include/config.hpp.in ../include/config.hpp)
+
+#production include (for use with .so files)
+include_directories(./prod_include)
+
 #Defaults
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD 23)
@@ -42,6 +50,7 @@ find_path(_INCLUDE_DIR
 
 find_library(_LIBRARY NAMES 
              HINTS ${PC__LIBDIR} ${PC__LIBRARY_DIRS} )
+pkg_check_modules(GTK4 REQUIRED gtk4)
 
 set(_LIBRARIES ${_LIBRARY} )
 set(_INCLUDE_DIRS ${_INCLUDE_DIR} )
@@ -52,13 +61,6 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(  DEFAULT_MSG
                                   _LIBRARY _INCLUDE_DIR)
 mark_as_advanced(_INCLUDE_DIR _LIBRARY )
-
-#base include
-include_directories(./include)
-configure_file(include/config.hpp.in ../include/config.hpp)
-
-#production include (for use with .so files)
-include_directories(./prod_include)
 
 find_package(PkgConfig REQUIRED)
 
@@ -82,8 +84,6 @@ add_library(dsetup SHARED ${DSETUP_CPP})
 add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
 
 #dxdiag:
-pkg_check_modules(GTK4 REQUIRED gtk4)
-
 add_executable(dxdiag tools/dxdiag/main.cpp)
 target_link_libraries(dxdiag ${GTK4_LIBRARIES})
 target_link_libraries(dxdiag dsetup)
