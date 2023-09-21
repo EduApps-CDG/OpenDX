@@ -24,6 +24,10 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
 include(CPack)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/root/ DESTINATION /)
 
+#C/C++ flags
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
+
 find_package(PkgConfig)
 pkg_check_modules(PC_ QUIET )
 set(_DEFINITIONS ${PC__CFLAGS_OTHER})
@@ -37,7 +41,6 @@ find_library(_LIBRARY NAMES
 
 set(_LIBRARIES ${_LIBRARY} )
 set(_INCLUDE_DIRS ${_INCLUDE_DIR} )
-set(CMAKE_CXX_STANDARD 20)
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set _FOUND to TRUE

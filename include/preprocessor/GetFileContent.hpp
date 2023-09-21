@@ -9,9 +9,4 @@
  * it means that every time it's called
  * the file content will be included in the code
  */
-#define GetFileContent(file_path) []() -> std::string { \
-    std::ifstream file(file_path); \
-    std::stringstream buffer; \
-    buffer << file.rdbuf(); \
-    return buffer.str(); \
-}()
+#define GetFileContent(file_path) #file_path

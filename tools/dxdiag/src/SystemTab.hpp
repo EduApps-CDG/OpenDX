@@ -2,6 +2,8 @@
 #include <gtk/gtk.h>
 #include <unistd.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <cstdio>

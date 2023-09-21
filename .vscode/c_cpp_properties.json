@@ -37,7 +37,7 @@
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
-            "cppStandard": "gnu++20",
+            "cppStandard": "gnu++23",
             "intelliSenseMode": "linux-gcc-x64",
             "cStandard": "gnu23",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json"

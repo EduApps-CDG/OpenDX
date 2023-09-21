@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+R"XXX(<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="GtkWindow" id="main_window">
@@ -398,3 +398,4 @@ If you know what area is causing the problem, click on the apropriate tab above.
     </property>
   </object>
 </interface>
+)XXX"
