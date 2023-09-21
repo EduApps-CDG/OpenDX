@@ -8,9 +8,9 @@
 #  _LIBRARIES - The libraries needed to use 
 #  _DEFINITIONS - Compiler switches required for using 
 
-cmake_minimum_required(VERSION 3.22)
-project(OpenDX)
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
 
 #Package
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
@@ -21,15 +21,16 @@ set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux
 set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
 
+#Defaults
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_CXX_STANDARD 23)
+cmake_minimum_required(VERSION 3.22)
+project(OpenDX)
+
+#Packaging
 include(CPack)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/bin DESTINATION /usr/ FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/lib DESTINATION /usr/ FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ WORLD_READ)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
-
-#C/C++ flags
-set(CMAKE_C_STANDARD 23)
-set(CMAKE_CXX_STANDARD 23)
 
 find_package(PkgConfig)
 pkg_check_modules(PC_ QUIET )
