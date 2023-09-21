@@ -13,7 +13,7 @@ project(OpenDX)
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
 
 #Package
-set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/root)
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
 set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "1.0.0")
@@ -22,7 +22,10 @@ set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
 
 include(CPack)
-install(DIRECTORY ${CMAKE_BINARY_DIR}/root/ DESTINATION /)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/bin DESTINATION /usr/bin FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/lib DESTINATION /usr/lib FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ WORLD_READ)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
 
 #C/C++ flags
 set(CMAKE_C_STANDARD 23)
@@ -48,9 +51,6 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(  DEFAULT_MSG
                                   _LIBRARY _INCLUDE_DIR)
 mark_as_advanced(_INCLUDE_DIR _LIBRARY )
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/root/usr/bin")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/root/usr/lib")
 
 #base include
 include_directories(./include)

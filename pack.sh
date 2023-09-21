@@ -1,4 +1,4 @@
-tar -cvf opendx.tar -C build/root .
+tar -cvf opendx.tar -C build opendx
 cd build
 cpack
 cd ..

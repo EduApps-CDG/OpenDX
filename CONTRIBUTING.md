@@ -23,7 +23,7 @@ These are the same universal steps for cmake:
 **Run:**
 ```sh
 #setups the terminal for better running.
-PATH=$PATH:./build/root/usr/bin
+PATH=$PATH:./build/opendx/bin
 
 #commands available to run:
 dxdiag
