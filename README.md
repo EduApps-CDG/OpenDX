@@ -2,7 +2,7 @@
   <h1>
     OpenDX
     <br>
-    <img src="./img/logo.png" width=260 alt="Bring DirectX to Linux!">
+    <img src="./img/logo.png" width=260 alt="| Bring DirectX to Linux!">
   </h1>
   <i>The Open Source DirectX alternative for Linux.</i>
   
