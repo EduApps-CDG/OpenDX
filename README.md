@@ -32,3 +32,7 @@ If you are interested in contributing to OpenDX or just want to stay up-to-date 
 If you like OpenDX, please give us a star on GitHub. This will help us to attract more users and contributors.
 
 Join us on our journey to bring DirectX to Linux!
+
+<a href = "https://github.com/EduApps-CDG/OpenDX/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=EduApps-CDG/OpenDX"/>
+</a>
