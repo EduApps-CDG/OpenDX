@@ -34,7 +34,7 @@ If you like OpenDX, please give us a star on GitHub. This will help us to attrac
 Active contributors will also appear here:
 
 <a href = "https://github.com/EduApps-CDG/OpenDX/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=EduApps-CDG/OpenDX" align="center"/>
+  <img src = "https://stg.contrib.rocks/image?repo=EduApps-CDG/OpenDX" align="center"/>
 </a>
 
 Join us on our journey to bring DirectX to Linux!
