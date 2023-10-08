@@ -1,11 +1,12 @@
 #pragma once
 #include <types/Translation.hpp>
+#include "en_US.hpp"
 
 /**
- * TODO Complete with @see /include/types/Translation.hpp
+ * TODO Complete with @see project://include/types/Translation.hpp
  */
 Translation_t Translation_esES() {
-	Translation_t r;
+	Translation_t r = Translation_enUS();
 
 	//Common texts
 	r.yes = (char*) "Sí";

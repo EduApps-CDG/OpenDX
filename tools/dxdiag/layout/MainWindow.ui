@@ -1,4 +1,4 @@
-R"XXX(<?xml version="1.0" encoding="UTF-8"?>
+R"XML(<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="GtkWindow" id="main_window">
@@ -20,7 +20,7 @@ R"XXX(<?xml version="1.0" encoding="UTF-8"?>
                     <property name="margin-top">5</property>
                     <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkLabel" id="system_description">
                         <property name="label" translatable="1">This tool reports detailed information about the DirectX components and drivers installed on your system.
 
 
@@ -49,7 +49,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                     <property name="column-spacing">5</property>
                                     <property name="column-homogeneous">1</property>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_currentDate">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Current Date/Time:</property>
                                         <property name="justify">right</property>
@@ -72,7 +72,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_pcName">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Computer Name:</property>
                                         <property name="justify">right</property>
@@ -95,7 +95,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_os">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Operating System:</property>
                                         <property name="justify">right</property>
@@ -118,7 +118,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_language">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Language:</property>
                                         <property name="justify">right</property>
@@ -141,7 +141,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_manufacturer">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">System Manufacturer:</property>
                                         <property name="justify">right</property>
@@ -164,7 +164,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_model">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">System Model:</property>
                                         <property name="justify">right</property>
@@ -187,7 +187,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_bios">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">BIOS:</property>
                                         <property name="justify">right</property>
@@ -210,7 +210,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_processor">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Processor:</property>
                                         <property name="justify">right</property>
@@ -233,7 +233,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_memory">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Memory:</property>
                                         <property name="justify">right</property>
@@ -256,7 +256,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_pageFile">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">Page/Swap File:</property>
                                         <property name="justify">right</property>
@@ -279,7 +279,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_directxVersion">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">DirectX Version:</property>
                                         <property name="justify">right</property>
@@ -302,7 +302,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkLabel" id="system_info_opendxVersion">
                                         <property name="halign">end</property>
                                         <property name="label" translatable="1">OpenDX Version:</property>
                                         <property name="justify">right</property>
@@ -332,7 +332,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                           </object>
                         </property>
                         <child type="label">
-                          <object class="GtkLabel">
+                          <object class="GtkLabel" id="system_info_label">
                             <property name="label" translatable="1">System Information</property>
                           </object>
                         </child>
@@ -341,7 +341,7 @@ If you know what area is causing the problem, click on the apropriate tab above.
                   </object>
                 </property>
                 <property name="tab">
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="tab_system_txt">
                     <property name="label" translatable="1" context="tab_system">System</property>
                   </object>
                 </property>
@@ -398,4 +398,4 @@ If you know what area is causing the problem, click on the apropriate tab above.
     </property>
   </object>
 </interface>
-)XXX"
+)XML"

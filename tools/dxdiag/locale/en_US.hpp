@@ -2,7 +2,7 @@
 #include <types/Translation.hpp>
 
 /**
- * TODO Complete with @see /include/types/Translation.hpp
+ * TODO Complete with project://include/types/Translation.hpp
  */
 Translation_t Translation_enUS() {
 	Translation_t r;

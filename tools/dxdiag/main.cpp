@@ -1,8 +1,8 @@
-#pragma once
+#include <iostream>
+
+#include <gtk/gtk.h> //GTK4
 
 #include <config.hpp>
-#include <iostream>
-#include <gtk/gtk.h> //GTK4
 #include "layout/MainWindow.hpp"
 #include "src/SystemTab.hpp"
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
 
     //setup events and show the screen:
-    SystemTab::setup(builder);
+    new SystemTab(builder);
     gtk_widget_show(GTK_WIDGET(window));
 
     while (g_list_model_get_n_items (gtk_window_get_toplevels ()) > 0)

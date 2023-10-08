@@ -55,6 +55,8 @@
         "streambuf": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "*.ui": "cpp"
+        "*.ui": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp"
     }
 }

@@ -48,6 +48,9 @@ HWND CreateWindowExA(
         gtk_widget_show(GTK_WIDGET(window));
     }
 
+    // TODO: find a no-signal way
+    // g_signal_connect(window, "destroy", G_CALLBACK(on_window_destroy), NULL);
+
     return window;
 }
 
@@ -78,8 +81,7 @@ BOOL GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax)
 
 BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg) {
     BOOL r = g_main_context_pending(NULL);
-   
-   //i know this is wrong, but i need to get the sample working
+
     if (r) {
         g_main_context_iteration(NULL, true);
     } else {
