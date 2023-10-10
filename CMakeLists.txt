@@ -51,6 +51,7 @@ find_path(_INCLUDE_DIR
 find_library(_LIBRARY NAMES 
              HINTS ${PC__LIBDIR} ${PC__LIBRARY_DIRS} )
 pkg_check_modules(GTK4 REQUIRED gtk4)
+pkg_check_modules(LIBDRM REQUIRED libdrm)
 
 set(_LIBRARIES ${_LIBRARY} )
 set(_INCLUDE_DIRS ${_INCLUDE_DIR} )
@@ -67,6 +68,8 @@ find_package(PkgConfig REQUIRED)
 #dependency
 include_directories(${GTK4_INCLUDE_DIRS})
 link_directories(${GTK4_LIBRARY_DIRS})
+include_directories(${LIBDRM_INCLUDE_DIRS})
+link_directories(${LIBDRM_LIBRARY_DIRS})
 
 #libopendx.so:
 set(OPENDX_CPP libs/opendx/opendx.cpp)
@@ -82,6 +85,7 @@ add_library(dsetup SHARED ${DSETUP_CPP})
 
 #libd3d9.so:
 add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
+target_link_libraries(d3d9 ${LIBDRM_LIBRARIES})
 
 #dxdiag:
 add_executable(dxdiag tools/dxdiag/main.cpp)

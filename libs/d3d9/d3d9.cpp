@@ -9,7 +9,8 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/kd.h>
-
+#include <xf86drm.h>
+#include <xf86drmMode.h>
 
 IDirect3D9::IDirect3D9 (UINT SDKVersion) {
 	#ifdef DEBUG
@@ -33,6 +34,9 @@ IDirect3D9::IDirect3D9 (UINT SDKVersion) {
     drm_get_cap gpuType;
     int ioctlResult = ioctl(fd, DRM_IOCTL_GET_CAP, &gpuType);
 
+	//get device vendor id:
+	drmVersion* version = drmGetVersion(fd);
+
     if (ioctlResult != 0) {
         std::cerr << "\033[1;31m"
 			<< "ODX ERROR: Failed to get device info" << std::endl
@@ -47,7 +51,7 @@ IDirect3D9::IDirect3D9 (UINT SDKVersion) {
 
 	#ifdef DEBUG
 		std::cout << "\033[1;32m" //GREEN BOLD
-			<< "ODX INFO: Device is " << (gpuType.value == DRM_CAP_DUMB_BUFFER ? "Software" : "Hardware") << std::endl
+			<< "ODX INFO: Device \"" << version->name << '(' << version->desc << ' ' << version->version_minor << '.' << version->version_patchlevel << ')' << "\" is " << (gpuType.value == DRM_CAP_DUMB_BUFFER ? "Software" : "Hardware") << std::endl
 			<< "\033[0;0m" << std::endl;
 	#endif
 

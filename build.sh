@@ -13,6 +13,7 @@ function check_package {
 check_package "gcc"
 check_package "cmake"
 check_package "make"
+check_package "libdrm-dev"
 check_package "libgtk-4-dev"
 
 # Build the project
