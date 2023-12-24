@@ -9,7 +9,7 @@ function check_package {
     fi
 }
 
-# Check if package is installed
+# Check if package is installed (Ubuntu)
 check_package "gcc"
 check_package "cmake"
 check_package "make"
