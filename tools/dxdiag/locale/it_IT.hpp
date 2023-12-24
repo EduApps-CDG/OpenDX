@@ -16,7 +16,7 @@ Translation_t Translation_itIT() {
 	//Tab names
 	r.tab_system = (char*) "Sistema";
 	r.tab_display = (char*) "Schermo";
-	r.tab_sound = (char*) "Suono";
+	r.tab_sound = (char*) "Audio";
 	r.tab_input = (char*) "Input";
 
 	//Buttons
