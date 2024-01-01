@@ -16,5 +16,3 @@ OpenDX.kdev4
 opendx.tar
 opendx.deb
 !build/.no-delete
-*.vsidx
-*.opendb
