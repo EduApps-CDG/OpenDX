@@ -72,7 +72,7 @@ Translation_t Translation_enUS() {
 	r.sound_device_name = (char*) "Device Name";
 	r.sound_device_hardwareId = (char*)"Hardware ID";
 	r.sound_device_manufacturerId = (char*)"Manufacturer ID";
-	r.sound_device_productID = (char*)"Product ID";
+	r.sound_device_productId = (char*)"Product ID";
 	r.sound_device_type = (char*)"Type";
 	r.sound_device_default = (char*)"Default Device";
 	r.sound_driver_label = (char*)"Drivers";
