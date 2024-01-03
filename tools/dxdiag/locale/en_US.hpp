@@ -41,5 +41,50 @@ Translation_t Translation_enUS() {
 	r.system_info_directxVersion = (char*) "DirectX Version";
 	r.system_info_opendxVersion = (char*) "OpenDX Version";
 
+	// Tab Display X
+
+	r.display_device_label = (char*) "Device";
+	r.display_device_manufacturer = (char*)"Manufacturer";
+	r.display_device_chipType = (char*)"Chip Type";
+	r.display_device_dacType = (char*)"DAC Type";
+	r.display_device_type = (char*)"Device Type";
+	r.display_device_mem = (char*)"Total Memory";
+	r.display_device_videoMem = (char*)"Video Memory";
+	r.display_device_sharedMem = (char*)"Shared Memory";
+	r.display_device_currDisplayMode = (char*)"Current Display Mode";
+	r.display_device_monitor = (char*)"Monitor";
+	r.display_driver_label = (char*)"Drivers";
+	r.display_driver_mainDriver = (char*)"Main Driver";
+	r.display_driver_version = (char*)"Version";
+	r.display_driver_date = (char*)"Date";
+	r.display_driver_whqlLogo = (char*)"WHQL Logo";
+	r.display_driver_d3dDdi = (char*)"Direct3D DDI";
+	r.display_driver_featureLevels = (char*)"Feature";
+	r.display_driver_model = (char*)"Model";
+	r.display_features_ddAccel = (char*) "DD Accel";
+	r.display_features_d3dAccel = (char*)"D3D Accel";
+	r.display_features_agpAccel = (char*)"AGP Accel";
+	r.display_notes_label = (char*)"Notes";
+
+	// Tab Sound
+
+	r.sound_device_label = (char*) "Device";
+	r.sound_device_name = (char*) "Device Name";
+	r.sound_device_hardwareId = (char*)"Hardware ID";
+	r.sound_device_manufacturerId = (char*)"Manufacturer ID";
+	r.sound_device_productID = (char*)"Product ID";
+	r.sound_device_type = (char*)"Type";
+	r.sound_device_default = (char*)"Default Device";
+	r.sound_driver_label = (char*)"Drivers";
+	r.sound_driver_name = (char*)"Name";
+	r.sound_driver_version = (char*)"Version";
+	r.sound_driver_date = (char*)"Date";
+	r.sound_driver_whqlLogo = (char*)"WHQL Logo";
+	r.sound_driver_otherFiles = (char*)"Other Files";
+	r.sound_driver_provider = (char*)"Provider";
+	r.sound_notes_label = (char*)"Notes";
+
+
+
 	return r;
 }
