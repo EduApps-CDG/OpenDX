@@ -1,7 +1,7 @@
 {
   "name": "ubuntu-jammy",
-  "image": "mcr.microsoft.com/azureml/minimal-ubuntu22.04-py39-cpu-inference:20240228.v1",
+  "image": "docker pull mcr.microsoft.com/azureml/inference-base-2204:20240228.v1",
   "features": {
-  }
+  },
   "postCreateCommand": "sudo ./build.sh"
 }
