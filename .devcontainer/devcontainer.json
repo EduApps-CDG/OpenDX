@@ -1,6 +1,6 @@
 {
   "name": "ubuntu-jammy",
-  "image": "docker pull mcr.microsoft.com/azureml/inference-base-2204:20240228.v1",
+  "image": "mcr.microsoft.com/azureml/inference-base-2204:20240228.v1",
   "features": {
   },
   "postCreateCommand": "sudo ./build.sh"
