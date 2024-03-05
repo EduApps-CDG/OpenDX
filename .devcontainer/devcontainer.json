@@ -1,6 +1,6 @@
 {
-  "name": "ubuntu-jammy",
-  "image": "ubuntu-latest",
+  "name": "ubuntu",
+  "image": "docker.io/library/ubuntu-latest",
   "features": {
   },
   "postCreateCommand": "sudo ./build.sh"
