@@ -1,7 +1,8 @@
 {
   "name": "ubuntu",
-  "image": "docker.io/library/ubuntu-latest",
+  "image": "docker.io/library/ubuntu",
   "features": {
   },
+  "onCreateCommand": "apt update && apt install sudo git",
   "postCreateCommand": "sudo ./build.sh"
 }
