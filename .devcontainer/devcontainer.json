@@ -1,7 +1,15 @@
 {
-  "name": "ubuntu-jammy",
-  "image": "ubuntu-latest",
+  "name": "ubuntu",
+  "image": "docker.io/library/ubuntu",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack"
+      ]
+    }
+  },
   "features": {
   },
+  "onCreateCommand": "apt update && apt install sudo git",
   "postCreateCommand": "sudo ./build.sh"
 }

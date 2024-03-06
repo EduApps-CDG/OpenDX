@@ -12,6 +12,9 @@
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 
+//TODO: add ifdefs when implementing another gpu
+#include <drm/i915_drm.h>
+
 IDirect3D9::IDirect3D9 (UINT SDKVersion) {
 	#ifdef DEBUG
 		std::cout << "libd3d9.so: IDirect3D9::IDirect3D9()" << std::endl;
@@ -93,7 +96,13 @@ HRESULT IDirect3D9::CreateDevice(
 		D3DPRESENT_PARAMETERS *pPresentationParameters,
 		IDirect3DDevice9      **ppReturnedDeviceInterface
 	) {
-		return 0;
+	#ifdef DEBUG
+		std::cout << "libd3d9.so: IDirect3D9::CreateDevice()" << std::endl;
+	#endif
+
+	//get hwnd size
+	RECT rect;
+	GetClientRect(hFocusWindow, &rect);
 }
 
 ULONG IDirect3D9::Release() {
