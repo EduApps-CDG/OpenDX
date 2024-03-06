@@ -191,12 +191,18 @@ struct D3DPRESENT_PARAMETERS {
 };
 typedef struct D3DPRESENT_PARAMETERS D3DPRESENT_PARAMETERS, *LPD3DPRESENT_PARAMETERS;
 
-struct IDirect3DDevice9 : public IUnknown {
+struct IDirect3DDevice9 {
+    IDirect3DDevice9();
+
     virtual HRESULT QueryInterface(REFIID riid, void** ppvObj);
     virtual ULONG AddRef();
     virtual ULONG Release();
 
+    HRESULT Clear(DWORD Count, const void/*D3DRECT*/ *pRects, DWORD Flags, int/*D3DCOLOR*/ Color, float Z, DWORD Stencil);
+
     // Define other methods required by IDirect3D9 interface
+
+    private:ULONG refCount;
 };
 typedef struct IDirect3DDevice9 *LPDIRECT3DDEVICE9, *PDIRECT3DDEVICE9;
 

@@ -15,7 +15,7 @@
 //TODO: add ifdefs when implementing another gpu
 #include <drm/i915_drm.h>
 
-IDirect3D9::IDirect3D9 (UINT SDKVersion) {
+IDirect3D9::IDirect3D9(UINT SDKVersion) {
 	#ifdef DEBUG
 		std::cout << "libd3d9.so: IDirect3D9::IDirect3D9()" << std::endl;
 	#endif
@@ -100,9 +100,16 @@ HRESULT IDirect3D9::CreateDevice(
 		std::cout << "libd3d9.so: IDirect3D9::CreateDevice()" << std::endl;
 	#endif
 
-	//get hwnd size
-	RECT rect;
-	GetClientRect(hFocusWindow, &rect);
+	//get GtkWindow specs and put them into D3DPRESENT_PARAMETERS
+	pPresentationParameters->hDeviceWindow = hFocusWindow;
+	pPresentationParameters->BackBufferWidth = gtk_widget_get_size(hFocusWindow,GTK_ORIENTATION_HORIZONTAL);
+	pPresentationParameters->BackBufferHeight = gtk_widget_get_size(hFocusWindow,GTK_ORIENTATION_VERTICAL);
+
+	//create the device
+	IDirect3DDevice9 device = IDirect3DDevice9(/*this, pPresentationParameters*/);
+	*ppReturnedDeviceInterface = &device;
+
+	return 0;
 }
 
 ULONG IDirect3D9::Release() {
@@ -137,4 +144,41 @@ IDirect3D9* Direct3DCreate9(UINT SDKVersion) {
 			<< "Creating D3D enumeration object failed; out of memory. Direct3DCreate fails and returns NULL.\033[0;0m" << std::endl;
 
 	return r;
+}
+
+IDirect3DDevice9::IDirect3DDevice9(/*IDirect3D9* d3d, D3DPRESENT_PARAMETERS* pp*/) {
+	#ifdef DEBUG
+		std::cout << "libd3d9.so: IDirect3DDevice9::IDirect3DDevice9()" << std::endl;
+	#endif
+
+	refCount = 1;
+}
+
+ULONG IDirect3DDevice9::AddRef() {
+	DXGASSERT(((ULONG_PTR)(&refCount) & 3) == 0);
+
+	InterlockedIncrement((LONG *)&refCount);
+	return refCount;
+}
+
+ULONG IDirect3DDevice9::Release() {
+	InterlockedDecrement((LONG *)&refCount);
+	return refCount;
+}
+
+HRESULT IDirect3DDevice9::QueryInterface(REFIID riid, void** ppvObj) {
+    *ppvObj = this;
+
+	IDirect3DDevice9::AddRef();
+	return 0;
+}
+
+HRESULT IDirect3DDevice9::Clear(DWORD Count, const void/*D3DRECT*/ *pRects, DWORD Flags, int/*D3DCOLOR*/ Color, float Z, DWORD Stencil) {
+	#ifdef DEBUG
+		std::cout << "libd3d9.so: IDirect3DDevice9::Clear()" << std::endl;
+	#endif
+
+	//intel code
+
+	return 0;
 }

@@ -2,7 +2,8 @@
  * Windows API codes were commented to focus
  * on what's important: OpenDX.
  *
- * Code that doesn't work is also commented.
+ * Code that doesn't work is also commented and will be gradually
+ * fixed. This is a work in progress.
  */
 #include <opendx.h>
 #include <winuser.h>
