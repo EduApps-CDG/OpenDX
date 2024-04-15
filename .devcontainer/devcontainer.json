@@ -9,6 +9,7 @@
     }
   },
   "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
   "onCreateCommand": "apt update && apt install sudo git",
   "postCreateCommand": "sudo ./build.sh"
