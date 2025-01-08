@@ -38,4 +38,4 @@ jobs:
         path: |
           opendx.deb
           opendx.tar
-        retention: 5 days
+        retention-days: 5
