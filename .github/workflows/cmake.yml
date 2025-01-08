@@ -33,7 +33,7 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
       
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: |
           opendx.deb
