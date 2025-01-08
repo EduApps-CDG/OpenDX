@@ -4,7 +4,7 @@
         "clang-diagnostic-pragma-once-outside-header"
     ],
     "files.associations": {
-        "phtml": "php",
+        "*.toml": "ini",
         "new": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -57,6 +57,16 @@
         "typeinfo": "cpp",
         "*.ui": "cpp",
         "bitset": "cpp",
-        "regex": "cpp"
-    }
+        "regex": "cpp",
+        "charconv": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "expected": "cpp",
+        "optional": "cpp",
+        "format": "cpp",
+        "span": "cpp",
+        "variant": "cpp",
+        "*.in": "cpp"
+    },
+    "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true
 }

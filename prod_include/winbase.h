@@ -6,7 +6,5 @@ inline LONG InterlockedIncrement(LONG volatile *p)
     return __sync_add_and_fetch(p, 1);
 }
 
-inline LONG InterlockedDecrement(LONG volatile *p)
-{
-    return __sync_sub_and_fetch(p, 1);
-}
+#define ZeroMemory RtlZeroMemory
+VOID WINAPI RtlZeroMemory(LPVOID dest, SIZE_T size);

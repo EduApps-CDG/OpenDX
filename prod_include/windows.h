@@ -2,7 +2,9 @@
  * This file only provides types for
  * Compatibility propourses regarding
  * OpenDX. It's not intended to rewrite
- * the entire Windows API.
+ * the entire Windows API and you should
+ * not use MSVC if you want compatibility
+ * with other platforms.
  *
  * Part of: libopendx.so
  */
@@ -46,3 +48,6 @@
 #define LONG_PTR __int64
 #define LPARAM LONG_PTR
 #define WPARAM unsigned __int64
+
+#include <basetsd.h>
+#include <winbase.h>

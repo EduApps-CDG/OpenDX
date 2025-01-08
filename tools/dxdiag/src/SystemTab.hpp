@@ -283,6 +283,8 @@ class SystemTab {
 		gtk_widget_queue_draw(GTK_WIDGET(label));
 		gtk_widget_queue_draw(gtk_widget_get_parent(GTK_WIDGET(label)));
 		gtk_widget_show(GTK_WIDGET(label));
+
+		return FALSE;
 	}
 
 	public:static gboolean setSwap(GtkLabel* label) {

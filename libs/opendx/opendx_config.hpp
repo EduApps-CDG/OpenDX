@@ -1,6 +1,7 @@
 #pragma once
-#include <windows.h>
 
+#define CONFIG_OPTION(name, val) \
+    name: new OpenDX_ConfigOption{#name, val}
 
 struct OpenDX_ConfigOption {
     const char* name;
@@ -14,17 +15,3 @@ struct OpenDX_Config {
     /// @brief  Experimental: ensure that our fb is the "master" framebuffer (the fb that owns the display)
     OpenDX_ConfigOption experimental_force_master;
 } OpenDX_Config;
-
-/**
- * @brief OpenDX utility class
- */
-class OpenDX {
-    public:
-        OpenDX(int argc, char* argv[],int (*WinMain)(HINSTANCE, HINSTANCE, LPSTR, int) = nullptr);
-        OpenDX(int (*WinMain)(HINSTANCE, HINSTANCE, LPSTR, int) = nullptr);
-        int getReturnCode();
-        static char* getPreferredGraphics();    
-    private:
-        int winMain_r = 0;
-        void loadConfig();
-};

@@ -1,6 +1,7 @@
 #pragma once
 #include <unknwn.h>
 #include "idirect3ddevice9.hpp"
+#include "idirect3d9.hpp"
 
 /**
  * IDirect3D9

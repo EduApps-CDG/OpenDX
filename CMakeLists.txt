@@ -11,6 +11,7 @@
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #Package
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
@@ -19,7 +20,8 @@ set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
 set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1, libdrm2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
 
 
 #base include
@@ -76,6 +78,7 @@ set(OPENDX_CPP libs/opendx/opendx.cpp)
 #file(GLOB_RECURSE OPENDX_CPP libs/opendx/fun/*.cpp)
 add_library(opendx SHARED ${OPENDX_CPP})
 target_link_libraries(opendx ${GTK4_LIBRARIES})
+target_link_libraries(opendx ${LIBDRM_LIBRARIES})
 
 #libdsetup.so:
 set(DSETUP_CPP libs/dsetup/dsetup.cpp)
@@ -84,7 +87,8 @@ file(GLOB_RECURSE DSETUP_CPP libs/dsetup/fun/*.cpp)
 add_library(dsetup SHARED ${DSETUP_CPP})
 
 #libd3d9.so:
-add_library(d3d9 SHARED libs/d3d9/d3d9.cpp)
+file(GLOB_RECURSE D3D9_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/*.cpp")
+add_library(d3d9 SHARED ${D3D9_SOURCES})
 target_link_libraries(d3d9 ${LIBDRM_LIBRARIES})
 
 #dxdiag:
@@ -93,6 +97,4 @@ target_link_libraries(dxdiag ${GTK4_LIBRARIES})
 target_link_libraries(dxdiag dsetup)
 target_link_libraries(dxdiag d3d9)
 
-
-#add ./tests/CMakeLists.txt
-add_subdirectory(tests)
+include(tests/CMakeLists.txt)

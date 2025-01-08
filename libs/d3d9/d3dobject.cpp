@@ -1,6 +1,7 @@
+#include <config.hpp>
 #include "idirect3ddevice9.hpp"
 
-class D3DObject {
+export class D3DObject {
     public:
         D3DObject(IDirect3DDevice9* device) : m_device(device) {}
         virtual ~D3DObject() {}

@@ -6,6 +6,7 @@
  * fixed. This is a work in progress.
  */
 #include <opendx.h>
+#include <windows.h>
 #include <winuser.h>
 #include <d3d9.h>
 #include <string>
@@ -13,6 +14,11 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+ * OpenDX can convert MSVC's WinMain, but
+ * it's not recommended as every other platform
+ * uses main() and it's not portable.
+ */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
     // Create the window
     HWND hWnd = CreateWindow(
@@ -26,14 +32,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     LPDIRECT3DDEVICE9 pDevice = NULL;
     D3DPRESENT_PARAMETERS pp;
 
-    //ZeroMemory(&pp, sizeof(pp));
+    ZeroMemory(&pp, sizeof(pp));
     pp.Windowed = TRUE;
     pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, 0/*D3DCREATE_HARDWARE_VERTEXPROCESSING*/, &pp, &pDevice);
+    pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &pp, &pDevice);
 
     // Enter the message loop
     MSG msg;
-    //ZeroMemory(&msg, sizeof(msg));
+    ZeroMemory(&msg, sizeof(msg));
+
     while (msg.message != WM_QUIT) {
         if (PeekMessage(&msg, hWnd, 0, 0, PM_REMOVE)) {
             //TranslateMessage(&msg);
@@ -59,10 +66,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 //Linux's main or MinGW's main:
 int main(int argc, char* argv[]) {
-    //OpenDX transforms argc and argv to WinMain params
-    //then calls WinMain. You can also initialize OpenDX
-    //without params and insert your code right here if
-    //you are using MinGW.
+    //If you want to use WinMain (please dont)
+    //you can pass it as a parameter:
     OpenDX odx(argc, argv,WinMain); //or OpenDX odx();
 
     return odx.getReturnCode(); // 0 if WinMain is not passed.

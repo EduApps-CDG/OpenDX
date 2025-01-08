@@ -10,7 +10,7 @@ This guide shows how to prepare your environment to contribute for OpenDX's Dire
 |[`cmake`](https://packages.ubuntu.com/lunar/cmake)|`3.25.1`|
 |[`make`](https://packages.ubuntu.com/lunar/make)|`4.3`|
 |[`libgtk-4-dev`](https://packages.ubuntu.com/lunar/libgtk-4-dev)|`4.10.1`|
-
+|[`libdrm-dev`](https://packages.ubuntu.com/lunar/libdrm-dev)|`4.10.1`|
 
 ## Building and running
 These are the same universal steps for cmake:

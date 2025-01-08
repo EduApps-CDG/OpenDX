@@ -1,6 +1,15 @@
 #pragma once
+#include <iostream>
+
+#define export __attribute__((visibility("default")))
 
 #define DEBUG true
+#ifdef DEBUG
+    #define DLOG(x) std::cout << x << std::endl;
+#else
+    #define DLOG(x) //x
+#endif
 
 //PREPROCESSING ONLY!!!
 #define PROJECT_SOURCE_DIR "@PROJECT_SOURCE_DIR@/"
+#define CONFIG_FILE "opendx.conf"
