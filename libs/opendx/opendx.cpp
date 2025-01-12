@@ -99,7 +99,7 @@ export BOOL GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFil
 }
 
 export BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg) {
-    BOOL r = g_main_context_pending(NULL);
+    BOOL r = g_list_model_get_n_items(gtk_window_get_toplevels ()) > 0;
 
     if (r) {
         g_main_context_iteration(NULL, true);

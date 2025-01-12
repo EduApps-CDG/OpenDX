@@ -54,7 +54,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
     }
 
-    sleep(5);
     // Clean up
     //pDevice->Release(); //causes a segfault
     //pD3D->Release();
