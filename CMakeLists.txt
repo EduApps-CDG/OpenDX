@@ -125,7 +125,6 @@ include(tests/CMakeLists.txt)
 
 
 #Package
-set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")

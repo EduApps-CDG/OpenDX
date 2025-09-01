@@ -1,5 +1,5 @@
 tar -cvf opendx.tar -C build opendx
 cd build
-cpack
+cpack -G DEB
 cd ..
 mv build/opendx*.deb ./opendx.deb
