@@ -19,9 +19,9 @@ struct IDirect3D9 : public IUnknown {
 		IDirect3DDevice9      **ppReturnedDeviceInterface
 	);
 
-private:
-	DWORD m_cRef;
-    // Define other methods required by IDirect3D9 interface
+	private:DWORD m_cRef;
+	private:IDirect3DDevice9* m_device;
+	private:HWND m_hFocusWindow;
 };
 
 //redeclare IDirect3D9 as IDirect3D9Ex

@@ -13,5 +13,12 @@ typedef enum D3DDEVTYPE {
 
 
 struct IDirect3DDevice9:IUnknown {
-    
+  friend class IDirect3D9;
+  friend class IDirect3D9_i915;
+  friend class IDirect3D9_vmwgfx;
+  friend class IDirect3D9_bochs;
+  
+  public:IDirect3DDevice9();
+  public:HRESULT Present(const RECT* pSourceRect, const RECT* pDestRect, HWND hDestWindowOverride, const void/*RGNDATA*/* pDirtyRegion);
+  private:uint32_t* framebuffer;
 };

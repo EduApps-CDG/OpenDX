@@ -1,11 +1,13 @@
 #pragma once
 
+#include <string>
+
 #define CONFIG_OPTION(name, val) \
     name: new OpenDX_ConfigOption{#name, val}
 
 struct OpenDX_ConfigOption {
-    const char* name;
-    char* value;
+    std::string name;
+    std::string value;
 };
 
 /// @brief OpenDX configuration options from the opendx.conf file
