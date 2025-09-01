@@ -13,7 +13,7 @@ function check_packages {
     if [ -n "$TO_INSTALL" ]; then
         echo "The following packages are not installed: $TO_INSTALL"
         echo "Installing missing packages..."
-        sudo apt install $TO_INSTALL
+        sudo apt install $TO_INSTALL --fix-missing -y
     fi
 }
 
