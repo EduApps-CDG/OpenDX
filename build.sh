@@ -20,5 +20,6 @@ check_package "libgtk-4-dev"
 cd build
 cmake ..
 make
+cd ..
 
 echo "Build complete, run ./run.sh to run the program"

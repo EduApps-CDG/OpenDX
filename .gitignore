@@ -10,9 +10,12 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
-build
+build/*
+!build/opendx
+build/opendx/*
+!build/opendx/usr
 .kdev4
-OpenDX.kdev4
+*.kdev4
 opendx.tar
 opendx.deb
-!build/.no-delete
+.cache

@@ -2,7 +2,9 @@
 This guide shows how to prepare your environment to contribute for OpenDX's DirectX reimplementation.
 
 ## Dependencies
-`./build.sh` detect and try to install the dependencies for you, but if you want to do it manually, here is the list of dependencies:
+If you-re using Ubuntu, `./build.sh` should detect and try to install the dependencies for you, but if you want to do it manually. You're free to modify `build.sh` according to your distro packages.
+
+Here is the list of dependencies:
 
 | Dependency | Version |
 |:-|-:|

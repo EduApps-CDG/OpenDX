@@ -8,6 +8,7 @@
 #  _LIBRARIES - The libraries needed to use 
 #  _DEFINITIONS - Compiler switches required for using 
 
+set(CMAKE_BUILD_TYPE Debug)
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
@@ -21,7 +22,7 @@ set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
 set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1, libdrm2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef")
 
 
 #base include
@@ -37,10 +38,17 @@ set(CMAKE_CXX_STANDARD 23)
 cmake_minimum_required(VERSION 3.22)
 project(OpenDX)
 
+#Dependency
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK4 REQUIRED gtk4)
+
+
 #Packaging
 include(CPack)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/bin DESTINATION /usr/ FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/lib DESTINATION /usr/ FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ WORLD_READ)
+install(DIRECTORY ${CMAKE_BINARY_DIR}/opendx/usr DESTINATION / FILE_PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA, ${CMAKE_SOURCE_DIR}/build/postinst)
 
 find_package(PkgConfig)
 pkg_check_modules(PC_ QUIET )
@@ -86,10 +94,38 @@ file(GLOB_RECURSE DSETUP_CPP libs/dsetup/fun/*.cpp)
 
 add_library(dsetup SHARED ${DSETUP_CPP})
 
+
 #libd3d9.so:
-file(GLOB_RECURSE D3D9_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/*.cpp")
+file(GLOB D3D9_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/*.cpp")
 add_library(d3d9 SHARED ${D3D9_SOURCES})
 target_link_libraries(d3d9 ${LIBDRM_LIBRARIES})
+target_include_directories(d3d9 PRIVATE ${GTK4_INCLUDE_DIRS})
+
+# if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+#     target_link_libraries(d3d9 d3d9_i915)
+# endif()
+
+#libd3d9_i915.so:
+file(GLOB_RECURSE D3D9_I915_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/i915/*.cpp")
+add_library(d3d9_i915 SHARED ${D3D9_I915_SOURCES})
+target_link_libraries(d3d9_i915 ${LIBDRM_LIBRARIES})
+target_link_libraries(d3d9_i915 d3d9)
+target_link_libraries(d3d9_i915 opendx)
+
+
+#libd3d9_vmwgfx.so:
+file(GLOB_RECURSE D3D9_VMWGFX_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/vmwgfx/*.cpp")
+add_library(d3d9_vmwgfx SHARED ${D3D9_VMWGFX_SOURCES})
+target_link_libraries(d3d9_vmwgfx ${LIBDRM_LIBRARIES})
+target_link_libraries(d3d9_vmwgfx d3d9)
+target_link_libraries(d3d9_vmwgfx opendx)
+
+#libd3d9_bochs.so:
+file(GLOB_RECURSE D3D9_BOCHS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/d3d9/bochs/*.cpp")
+add_library(d3d9_bochs SHARED ${D3D9_BOCHS_SOURCES})
+target_link_libraries(d3d9_bochs ${LIBDRM_LIBRARIES})
+target_link_libraries(d3d9_bochs d3d9)
+target_link_libraries(d3d9_bochs opendx)
 
 #dxdiag:
 add_executable(dxdiag tools/dxdiag/main.cpp)

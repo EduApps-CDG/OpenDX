@@ -9,10 +9,16 @@
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "${workspaceFolder}/build/opendx/lib"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb"
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "Build C++ Project"
         },
 
         //sample (also in build folder)
@@ -20,14 +26,20 @@
             "name": "sample",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/tests/sample",
+            "program": "${workspaceFolder}/build/opendx/bin/sample",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "${workspaceFolder}/build/opendx/lib"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb"
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "Build C++ Project"
         }
     ],
     "version": "2.0.0"
