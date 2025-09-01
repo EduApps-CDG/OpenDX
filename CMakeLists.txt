@@ -7,7 +7,7 @@
 #  _INCLUDE_DIRS - The  include directories
 #  _LIBRARIES - The libraries needed to use 
 #  _DEFINITIONS - Compiler switches required for using 
-
+cmake_minimum_required(VERSION 3.25)
 project(OpenDX VERSION 1.0.0)
 
 set(CMAKE_BUILD_TYPE Debug)
@@ -18,7 +18,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
 
 #Package
-include(CPack)
 set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
@@ -139,3 +138,4 @@ install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/applications/dxdiag.desktop
         DESTINATION usr/share/applications)
 
 include(tests/CMakeLists.txt)
+include(CPack)
