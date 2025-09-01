@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=dxdiag
+GenericName=DirectX Diagnostic Tool
+Comment=dxdiag from OpenDX
+Exec=dxdiag
+Terminal=false
+Icon=opendx
+Categories=Game;Utility;
