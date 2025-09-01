@@ -18,8 +18,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef")
 
-install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/icons/opendx.png DESTINATION usr/share/icons)
-
 #base include
 include_directories(./include)
 configure_file(include/config.hpp.in ../include/config.hpp)
@@ -34,36 +32,12 @@ cmake_minimum_required(VERSION 3.22)
 
 #Dependency
 find_package(PkgConfig REQUIRED)
-
-pkg_check_modules(PC_ QUIET )
-set(_DEFINITIONS ${PC__CFLAGS_OTHER})
-
-find_path(_INCLUDE_DIR 
-          HINTS ${PC__INCLUDEDIR} ${PC__INCLUDE_DIRS}
-          PATH_SUFFIXES  )
-
-find_library(_LIBRARY NAMES 
-             HINTS ${PC__LIBDIR} ${PC__LIBRARY_DIRS} )
 pkg_check_modules(GTK4 REQUIRED gtk4)
 pkg_check_modules(LIBDRM REQUIRED libdrm)
-
-set(_LIBRARIES ${_LIBRARY} )
-set(_INCLUDE_DIRS ${_INCLUDE_DIR} )
-
-include(FindPackageHandleStandardArgs)
-# handle the QUIETLY and REQUIRED arguments and set _FOUND to TRUE
-# if all listed variables are TRUE
-find_package_handle_standard_args(  DEFAULT_MSG
-                                  _LIBRARY _INCLUDE_DIR)
-mark_as_advanced(_INCLUDE_DIR _LIBRARY )
-
-find_package(PkgConfig REQUIRED)
-
-#dependency
 include_directories(${GTK4_INCLUDE_DIRS})
-link_directories(${GTK4_LIBRARY_DIRS})
 include_directories(${LIBDRM_INCLUDE_DIRS})
-link_directories(${LIBDRM_LIBRARY_DIRS})
+
+install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/icons/opendx.png DESTINATION usr/share/icons)
 
 #libopendx.so:
 set(OPENDX_CPP libs/opendx/opendx.cpp)
