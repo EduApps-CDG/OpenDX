@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Auto-build and Resolve dependencies
-      run: ./build.sh
+      run: apt update && ./build.sh
 
     - name: Packing into a tar and a deb
       run: ./pack.sh #&& cat /home/runner/work/OpenDX/OpenDX/build/_CPack_Packages/Linux/DEB/PreinstallOutput.log
