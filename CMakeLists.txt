@@ -15,8 +15,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #Package
+include(CPack)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
-set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_NAME "opendx")
 set(CPACK_PACKAGE_VERSION "1.0.0")
 set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
