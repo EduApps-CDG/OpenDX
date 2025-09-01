@@ -17,20 +17,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
 
-#Package
-set(CPACK_GENERATOR "STGZ;TGZ;TZ;DEB;RPM")
-set(CPACK_PACKAGE_NAME "opendx")
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
-set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1, libdrm2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef")
-
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "${CPACK_PACKAGE_CONTACT}")
-set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
-set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA ${CMAKE_BINARY_DIR}/postinst)
-
 install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/icons/opendx.png DESTINATION usr/share/icons)
 
 #base include
@@ -139,4 +125,18 @@ install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/applications/dxdiag.desktop
         DESTINATION usr/share/applications)
 
 include(tests/CMakeLists.txt)
+
+#Package
+set(CPACK_GENERATOR "STGZ;TGZ;TZ;DEB;RPM")
+set(CPACK_PACKAGE_NAME "opendx")
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+set(CPACK_PACKAGE_DESCRIPTION "Open Source reimplementation of DirectX for Linux")
+set(CPACK_PACKAGE_CONTACT "Eduardo P. Gomez <eduardoprocopiogomez@gmail.com>")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libgtk-4-1, libdrm2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef")
+
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "${CPACK_PACKAGE_CONTACT}")
+set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA ${CMAKE_BINARY_DIR}/postinst)
 include(CPack)
