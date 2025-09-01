@@ -2,23 +2,31 @@
 # This file will install the required packages and build the project
 
 # Check if package is installed
-function check_package {
-    if ! dpkg -s $1 > /dev/null 2>&1; then
-        echo "Package $1 is not installed. Installing..."
-        sudo apt install $1
+function check_packages {
+    TO_INSTALL=""
+    for pkg in "$@"; do
+        if ! dpkg -s $pkg > /dev/null 2>&1; then
+            TO_INSTALL="$TO_INSTALL $pkg"
+        fi
+    done
+
+    if [ -n "$TO_INSTALL" ]; then
+        echo "The following packages are not installed: $TO_INSTALL"
+        echo "Installing missing packages..."
+        sudo apt install $TO_INSTALL
     fi
 }
 
 # Check if package is installed (Ubuntu)
-check_package "gcc"
-check_package "cmake"
-check_package "make"
-check_package "libdrm-dev"
-check_package "libgtk-4-dev"
+echo "Checking required packages..."
+check_packages gcc cmake make libdrm-dev libgtk-4-dev
 
 # Build the project
+echo "Building the project..."
 cd build
+echo "> CMake .."
 cmake ..
+echo "> make"
 make
 cd ..
 
