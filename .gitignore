@@ -11,6 +11,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 build/*
+!build/postinst
 !build/opendx
 build/opendx/*
 !build/opendx/usr

@@ -1,0 +1,11 @@
+#!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+echo -e "${GREEN}OpenDX is being installed...${NC}"
+
+# setup desktop file and icon cache
+chmod a+x /usr/share/applications/dxdiag.desktop
+update-icon-caches /usr/share/icons
+update-desktop-database 
