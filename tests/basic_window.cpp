@@ -69,7 +69,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             /*pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
             pDevice->BeginScene();
             pDevice->EndScene();*/
-            // pDevice->Present(NULL, NULL, NULL, NULL);
+            pDevice->Present(NULL, NULL, NULL, NULL);
         }
     }
 

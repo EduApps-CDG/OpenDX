@@ -24,14 +24,14 @@ class OpenDX {
         int getReturnCode();
         std::string getPreferredGraphics();
         OpenDX_Device getDevice(int index);
-        const GtkApplication* getApplication();
+        GtkApplication* getApplication();
         const OpenDX_ApplicationConfig* appConfig;
         GdkPixbuf* createPixbuf(uint32_t* framebuffer, int width, int height, int pitch);
 
         static OpenDX* getInstance();
     private:
         int winMain_r = 0;
-        const GtkApplication* app = nullptr;
+        GtkApplication* app = nullptr;
         void loadConfig();
         void setDefaultConfig();
         void initializeFds();

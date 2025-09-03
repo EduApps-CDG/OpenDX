@@ -1,10 +1,14 @@
 #include <config.hpp>
 #include "idirect3ddevice9.hpp"
+#include "cairo.h"
+#include "gdk/gdk.h"
+#include "gtk/gtk.h"
 #include <drm/drm.h>
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <opendx.h>
 #include <functional>
 #include <memory>
 #include <fstream>
@@ -106,6 +110,14 @@ HRESULT IDirect3DDevice9::Present(
     HWND hDestWindowOverride,
     const void/*RGNDATA*/* pDirtyRegion
 ) {
-    DLOG("libd3d9.so: IDirect3DDevice9::Present()");
+    // DLOG("libd3d9.so: IDirect3DDevice9::Present()");
+    HWND hwnd = hDestWindowOverride ? hDestWindowOverride : this->hFocusWindow;
+    if (hwnd == NULL) {
+        return E_FAIL;
+    }
+
+    // gdk_d3d_context_set_framebuffer(GDK_D3D_CONTEXT(self), buffer);
+    
+    //check 
     return 0;
 }

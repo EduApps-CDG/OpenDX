@@ -11,7 +11,7 @@ struct OpenDX_ConfigOption {
 };
 
 /// @brief OpenDX configuration options from the opendx.conf file
-struct OpenDX_Config {
+static struct OpenDX_Config_t {
     /// @brief the preferred graphics card set by configuration
     OpenDX_ConfigOption preferred_card;
     /// @brief  Experimental: ensure that our fb is the "master" framebuffer (the fb that owns the display)

@@ -16,7 +16,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/bin")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/opendx/lib")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/opendx)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=default -Wno-undef -Wno-attributes")
 
 #base include
 include_directories(./include)
@@ -41,7 +41,8 @@ install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/icons/opendx.png DESTINATION usr
 
 #libopendx.so:
 set(OPENDX_CPP libs/opendx/opendx.cpp)
-#file(GLOB_RECURSE OPENDX_CPP libs/opendx/fun/*.cpp)
+file(GLOB_RECURSE OPENDX_GTK_CPP libs/opendx/gtk/*.cpp)
+list(APPEND OPENDX_CPP ${OPENDX_GTK_CPP})
 add_library(opendx SHARED ${OPENDX_CPP})
 target_link_libraries(opendx ${GTK4_LIBRARIES})
 target_link_libraries(opendx ${LIBDRM_LIBRARIES})

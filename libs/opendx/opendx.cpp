@@ -1,5 +1,6 @@
 #include <config.hpp>
 #include "opendx.hpp"
+#include "glib.h"
 #include "opendx_config.hpp"
 #include <windows.h>
 #include <gtk/gtk.h>
@@ -42,11 +43,12 @@ export HWND CreateWindowExA(
         return nullptr;
     }
 
-    GtkApplication* app = const_cast<GtkApplication*>(LPDX->getApplication());
+    GtkApplication* app = LPDX->getApplication();
 
     if (!app) {
         app = gtk_application_new(LPDX->appConfig->ApplicationId, G_APPLICATION_DEFAULT_FLAGS);
         g_application_register(G_APPLICATION(app), NULL, NULL);
+        g_application_run (G_APPLICATION (app), 0, NULL);
         DLOG("  Application created with ID: " << LPDX->appConfig->ApplicationId);
     }
 
@@ -97,7 +99,8 @@ export BOOL DestroyWindow(HWND window) {
 }
 
 export BOOL GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax) {
-    BOOL r = g_main_context_pending(NULL);
+    GMainContext *context = g_main_context_default();
+    BOOL r = g_main_context_pending(context);
 
 
    //i know this is wrong, but i need to get the sample working
@@ -111,12 +114,24 @@ export BOOL GetMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFil
 }
 
 export BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, UINT wRemoveMsg) {
-    BOOL r = g_list_model_get_n_items(gtk_window_get_toplevels ()) > 0;
+    GMainContext *context = g_main_context_default();
+    BOOL r = g_main_context_pending(context);
 
-    if (r) {
-        g_main_context_iteration(NULL, true);
-    } else {
+    if (r && context != nullptr) {
+        g_main_context_iteration(context, true);
+    }
+
+    //are there no more windows?
+    GListModel* toplevels = gtk_window_get_toplevels();
+    if (toplevels == nullptr || g_list_model_get_n_items(toplevels) == 0) {
         lpMsg->message = WM_QUIT;
+        return r;
+    }
+
+    //is hWnd closed?
+    if (hWnd == nullptr || !gtk_widget_get_visible(GTK_WIDGET(hWnd))) {
+        lpMsg->message = WM_CLOSE;
+        return r;
     }
 
     return r;
@@ -165,7 +180,7 @@ export OpenDX::OpenDX(
 ) : OpenDX(0, {}, WinMain, appConfig) {
 }
 
-export const GtkApplication* OpenDX::getApplication() {
+export GtkApplication* OpenDX::getApplication() {
     return app;
 }
 
@@ -309,7 +324,6 @@ export void OpenDX::loadConfig() {
             << "\033[0;0m" << std::endl;
     }
     LPDX = this;
-
     OpenDX_Config = {};
     OpenDX_Config.preferred_card = {
         .name = "preferred_card",

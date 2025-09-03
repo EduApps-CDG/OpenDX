@@ -1,5 +1,15 @@
 #!/bin/bash
 # This file will install the required packages and build the project
+# Feel free to contribute it to suit your distro.
+
+UBUNTU_PACKAGES=(
+    gcc
+    cmake
+    make
+    libdrm-dev
+    libgtk-4-dev
+    rpm # For cpack RPM generation ("rpm-build" in some distros)
+);
 
 # Check if package is installed
 function check_packages {
@@ -19,7 +29,7 @@ function check_packages {
 
 # Check if package is installed (Ubuntu)
 echo "Checking required packages..."
-check_packages gcc cmake make libdrm-dev libgtk-4-dev
+check_packages "${UBUNTU_PACKAGES[@]}"
 
 # Build the project
 echo "Building the project..."

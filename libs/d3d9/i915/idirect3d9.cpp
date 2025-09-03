@@ -1,6 +1,7 @@
 #include <config.hpp>
 #include <opendx.h>
 #include "../idirect3d9.hpp"
+#include "gtk/gtk.h"
 #include "idirect3d9.hpp"
 #include <drm/drm.h>
 #include <xf86drm.h>
@@ -41,6 +42,13 @@
 //     std::cout << "Framebuffer salvo em " << filename << std::endl;
 // }
 
+static void on_drawing_area_realize(GtkWidget *widget, gpointer user_data);
+static void draw_function(GtkDrawingArea *area, cairo_t *cr, int a, int b, gpointer user_data);
+struct present_data {
+    IDirect3DDevice9* device;
+    uint32_t* framebuffer;
+};
+
 export IDirect3DDevice9* IDirect3D9_i915::createDevice(
     IDirect3D9* d3d9, UINT Adapter, D3DDEVTYPE DeviceType, 
     HWND hFocusWindow, DWORD BehaviorFlags,
@@ -62,6 +70,7 @@ export IDirect3DDevice9* IDirect3D9_i915::createDevice(
 
     //create IDirect3DDevice9 device; and assign functions to it
     IDirect3DDevice9* device = new IDirect3DDevice9();
+    device->hFocusWindow = hFocusWindow;
     // ZeroMemory(device, sizeof(device));
     device->QueryInterface = (HRESULT (*)(REFIID riid, void **ppvObject))
         createQueryInterface(device)->target<HRESULT(REFIID, void**)>();
@@ -155,14 +164,13 @@ export IDirect3DDevice9* IDirect3D9_i915::createDevice(
     int height = 50;
 
     // // Draw a red square around the screen
-    uint32_t* framebuffer = static_cast<uint32_t*>(mmap(0, create_req.size, PROT_READ | PROT_WRITE, MAP_SHARED, Adapter, mreq.offset)); 
+    uint32_t* framebuffer = static_cast<uint32_t*>(mmap(0, create_req.size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, mreq.offset)); 
     device->framebuffer = framebuffer;
     
     if (framebuffer == MAP_FAILED) {
         perror("mmap failed");
         //destroy fb
-        drmModeRmFB(Adapter, create_req.handle);
-        close(Adapter);
+        drmModeRmFB(fd, create_req.handle);
         return nullptr;
     }
     int borderWidth = 5;
@@ -206,7 +214,73 @@ export IDirect3DDevice9* IDirect3D9_i915::createDevice(
 
     // drmSetMaster(fd);
 
+    //inject framebuffer into HWND (through GdkD3DContext)
+    DLOG("  Injecting GdkD3DContext into HWND");
+    GtkWidget *drawing_area = gtk_drawing_area_new();
+    present_data pdata = {device, framebuffer};
+    g_signal_connect(drawing_area, "realize", G_CALLBACK(on_drawing_area_realize), &pdata);
+    gtk_window_set_child(GTK_WINDOW(hFocusWindow), drawing_area);
+
+    gtk_widget_set_visible(drawing_area, TRUE);
     return device;
+}
+
+static void on_drawing_area_realize(GtkWidget *widget, gpointer user_data) {
+    DLOG("libd3d9.so: on_drawing_area_realize(): Drawing area injected. Inserting framebuffer");
+    present_data* pdata = static_cast<present_data*>(user_data);
+    IDirect3DDevice9* device = pdata->device;
+    uint32_t* framebuffer = pdata->framebuffer;
+
+    GtkNative *native = gtk_widget_get_native(widget);
+    GdkSurface *surface = gtk_native_get_surface(native);
+    GdkDisplay *display = gdk_surface_get_display(surface);
+
+    GdkD3DContext *context = (GdkD3DContext *) g_object_new(
+        GDK_TYPE_D3D_CONTEXT,
+        "surface",
+        surface,
+        "display", display,
+        NULL
+    );
+
+    if (context == NULL) {
+        g_critical("Failed to create GdkD3DContext!");
+        return;
+    }
+
+    gdk_d3d_context_set_framebuffer(context, framebuffer);
+    gdk_d3d_context_set_device(context, (ID3DCompatibleDevice*) device);
+    gtk_drawing_area_set_draw_func(
+        GTK_DRAWING_AREA(widget),
+        draw_function,
+        &framebuffer,
+        NULL
+    );
+    // gdk_draw_context_begin_draw(GDK_DRAW_CONTEXT(context), nullptr);
+    // gdk_draw_context_end_draw(GDK_DRAW_CONTEXT(context));
+}
+
+static void draw_function(GtkDrawingArea *area, cairo_t *cr, int width, int height, gpointer user_data) {
+    
+    DLOG("libopendx.so: gdk_d3d_context_draw(): Drawing framebuffer to widget");
+    uint32_t* framebuffer = *(uint32_t**)user_data;
+    if (framebuffer == nullptr) {
+        DLOG("libopendx.so: gdk_d3d_context_draw(): No framebuffer set, skipping draw");
+        return;
+    }
+
+    cairo_surface_t *cairo_surface =
+        cairo_image_surface_create_for_data(
+            (unsigned char*)framebuffer,
+            CAIRO_FORMAT_ARGB32,
+            width,
+            height,
+            width * 4 // pitch (bytes per row)
+        );
+    
+    cairo_set_source_surface(cr, cairo_surface, 0, 0);
+    cairo_paint(cr);
+    cairo_surface_destroy(cairo_surface);
 }
 
 extern "C" __attribute__((visibility("default"))) IDirect3DDevice9* odx_create_i915_device(

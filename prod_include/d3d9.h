@@ -204,10 +204,7 @@ struct IDirect3DDevice9 {
     virtual ULONG Release();
 
     HRESULT Clear(DWORD Count, const void/*D3DRECT*/ *pRects, DWORD Flags, int/*D3DCOLOR*/ Color, float Z, DWORD Stencil);
-
-    // Define other methods required by IDirect3D9 interface
-
-    private:ULONG refCount;
+    HRESULT Present(const RECT* pSourceRect, const RECT* pDestRect, HWND hDestWindowOverride, const void/*RGNDATA*/* pDirtyRegion);
 };
 typedef struct IDirect3DDevice9 *LPDIRECT3DDEVICE9, *PDIRECT3DDEVICE9;
 
