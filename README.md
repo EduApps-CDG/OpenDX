@@ -11,6 +11,11 @@
   [![Build Status](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml/badge.svg)](https://github.com/EduApps-CDG/OpenDX/actions/workflows/cmake.yml)
 </div>
 
+
+> [!warning]
+>
+> OpenDX is in its early development states and **WILL** break.
+
 OpenDX is a fully-featured implementation of DirectX for the Linux operating system, without the need for compatibility layers or emulators. This allows Linux developers to build DirectX games and applications with improved performance thanks to Linux's built-in Direct Rendering Manager (DRM).
 
 <div align=center>
