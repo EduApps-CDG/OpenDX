@@ -398,7 +398,7 @@ void OpenDX::setDefaultConfig() {
         if (term != nullptr && strcmp(term, "linux") == 0) {
             //YELLOW COLOR
             std::cout << "\033[1;33m" 
-                << "ODX WARNING: You are running in a tty."
+                << "ODX WARNING: You are running in a tty. "
                 << "Enabling experimental feature 'experimental_force_master'."
                 << "\033[0;0m" << std::endl;
 
