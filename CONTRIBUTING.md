@@ -2,10 +2,9 @@
 This guide shows how to prepare your environment to contribute for OpenDX's DirectX reimplementation.
 
 ## Dependencies
-If you-re using Ubuntu, `./build.sh` should detect and try to install the dependencies for you, but if you want to do it manually. You're free to modify `build.sh` according to your distro packages.
+If you-re using Ubuntu or Arch Linux, `./build.sh` should detect and try to install the dependencies for you. You're free to modify `build.sh` according to your distro packages in a pull request.
 
-Here is the list of dependencies:
-
+But if you want to do it manually. Here is the list of dependencies:
 | Dependency | Version |
 |:-|-:|
 |[`gcc`](https://packages.ubuntu.com/lunar/gcc)|`12.2.0`|
@@ -24,8 +23,8 @@ These are the same universal steps for cmake:
 
 **Run:**
 ```sh
-#setups the terminal for better running.
-PATH=$PATH:./build/opendx/bin
+#setup env vars such as PATH and LD_LIBRARY_PATH
+source ./setpath.sh
 
 #commands available to run:
 dxdiag
