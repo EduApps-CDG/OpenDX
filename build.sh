@@ -58,6 +58,13 @@ if [ -f /etc/os-release ]; then
     if [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
         INSTALL_CMD="sudo pacman -Syu --needed --noconfirm"
         PACKAGES=("${ARCH_PACKAGES[@]}")
+    elif [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"debian"* ]]; then
+        INSTALL_CMD="sudo apt install -y --fix-missing"
+        PACKAGES=("${UBUNTU_PACKAGES[@]}")
+    else
+        echo "Distro $ID is not directly supported. Attempting to use Ubuntu packages."
+        INSTALL_CMD="sudo apt install -y --fix-missing"
+        PACKAGES=("${UBUNTU_PACKAGES[@]}")
     fi
 else
     echo "Cannot determine the operating system. Exiting."
