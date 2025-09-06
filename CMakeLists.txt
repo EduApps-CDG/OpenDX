@@ -95,7 +95,7 @@ install(TARGETS d3d9_bochs DESTINATION usr/lib)
 add_executable(dxdiag tools/dxdiag/main.cpp)
 target_link_libraries(dxdiag ${GTK4_LIBRARIES})
 target_link_libraries(dxdiag dsetup)
-target_link_libraries(dxdiag d3d9)
+target_link_libraries(dxdiag d3d9 opendx)
 install(TARGETS dxdiag DESTINATION usr/bin)
 install(FILES ${CMAKE_INSTALL_PREFIX}/usr/share/applications/dxdiag.desktop
         DESTINATION usr/share/applications)
