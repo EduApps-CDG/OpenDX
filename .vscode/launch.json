@@ -4,7 +4,7 @@
             "name": "dxdiag",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/dxdiag",
+            "program": "${workspaceFolder}/build/opendx/bin/dxdiag",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
