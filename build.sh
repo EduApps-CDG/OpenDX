@@ -50,9 +50,6 @@ function check_packages {
     fi
 }
 
-# Check if package is installed (Ubuntu)
-echo "Checking required packages..."
-
 #check distro (ID)
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -67,6 +64,8 @@ else
     exit 1
 fi
 
+# Check if package is installed
+echo "Checking required packages for $DISTRO..."
 check_packages "${PACKAGES[@]}"
 
 # Build the project
