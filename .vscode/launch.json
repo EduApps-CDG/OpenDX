@@ -1,6 +1,5 @@
 {
     "configurations": [
-        //cmake then make in build folder
         {
             "name": "dxdiag",
             "type": "cppdbg",

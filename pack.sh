@@ -3,3 +3,4 @@ cd build
 cpack
 cd ..
 mv build/opendx*.deb ./opendx.deb
+mv build/opendx*.rpm ./opendx.rpm

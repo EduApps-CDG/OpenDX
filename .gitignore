@@ -19,4 +19,5 @@ build/opendx/*
 *.kdev4
 opendx.tar
 opendx.deb
+opendx.rpm
 .cache

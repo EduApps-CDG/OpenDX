@@ -32,10 +32,29 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
       
-    - name: Upload Artifact
+    - name: Upload Debian Package Artifact
       uses: actions/upload-artifact@v4
       with:
-        path: |
-          opendx.deb
-          opendx.tar
+        # Nome do artefato que aparecerá na UI do GitHub
+        name: opendx-deb
+        # Caminho para o arquivo específico
+        path: opendx.deb
+        retention-days: 5
+
+    - name: Upload RPM Package Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        # Nome do artefato que aparecerá na UI do GitHub
+        name: opendx-rpm
+        # Caminho para o arquivo específico
+        path: opendx.rpm
+        retention-days: 5
+
+    - name: Upload Tarball Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        # Um nome diferente para o segundo artefato
+        name: opendx-tar
+        # O caminho para o outro arquivo
+        path: opendx.tar
         retention-days: 5
