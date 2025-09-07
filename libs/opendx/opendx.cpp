@@ -45,12 +45,6 @@ export HWND CreateWindowExA(
 
     GtkApplication* app = LPDX->getApplication();
 
-    if (!app) {
-        app = gtk_application_new(LPDX->appConfig->ApplicationId, G_APPLICATION_DEFAULT_FLAGS);
-        g_application_register(G_APPLICATION(app), NULL, NULL);
-        g_application_run (G_APPLICATION (app), 0, NULL);
-        DLOG("  Application created with ID: " << LPDX->appConfig->ApplicationId);
-    }
 
     GtkWidget* window = gtk_application_window_new(app);
     if (title != nullptr) {
@@ -117,10 +111,6 @@ export BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFi
     GMainContext *context = g_main_context_default();
     BOOL r = g_main_context_pending(context);
 
-    if (r && context != nullptr) {
-        g_main_context_iteration(context, true);
-    }
-
     //are there no more windows?
     GListModel* toplevels = gtk_window_get_toplevels();
     if (toplevels == nullptr || g_list_model_get_n_items(toplevels) == 0) {
@@ -137,9 +127,15 @@ export BOOL PeekMessageA(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFi
     return r;
 }
 
+struct OpenDX_SignalParam {
+    int (*WinMain)(HINSTANCE, HINSTANCE, LPSTR, int);
+    char* cmdline;
+};
+
 /*
  * OpenDX utility class
  */
+
 export OpenDX::OpenDX(
     int argc, char* argv[],
     int (*WinMain)(HINSTANCE, HINSTANCE, LPSTR, int),
@@ -148,18 +144,20 @@ export OpenDX::OpenDX(
     this->loadConfig();
     this->initializeFds();
 
-    if (appConfig != nullptr) {
-        this->appConfig = appConfig;
-    } else {
+    //If you're passing WinMain, you'll probably want to use CreateWindow for compatibility purposes
+    if (appConfig == nullptr) {
         this->appConfig = new OpenDX_ApplicationConfig {
             .ApplicationId = "org.opendx.default"
         };
+    } else {
+        this->appConfig = appConfig;
     }
-
+    DLOG("  Application created with ID: " << LPDX->appConfig->ApplicationId);
+    
     //Converts argc and argv to WinMain params
     char* cmdline = (char*) malloc(sizeof(char));
     cmdline[0] = '\0';
-
+    
     for (int i = 0; i < argc; i++) {
         cmdline = (char*) realloc(cmdline, strlen(cmdline) + strlen(argv[i]) + 2);
         strcat(cmdline, argv[i]);
@@ -167,10 +165,21 @@ export OpenDX::OpenDX(
             strcat(cmdline, " ");
         }
     }
-
-    gtk_init();
+    
     if (WinMain != nullptr) {
-        winMain_r = (*WinMain)(nullptr,nullptr,cmdline,0);
+        OpenDX_SignalParam param = {
+            .WinMain = WinMain,
+            .cmdline = cmdline
+        };
+        gtk_init();
+        this->app = gtk_application_new(LPDX->appConfig->ApplicationId, G_APPLICATION_DEFAULT_FLAGS);
+        g_application_register(G_APPLICATION(this->app), NULL, NULL);
+        auto activate = +[](GApplication* app, gpointer user_data) {
+            OpenDX_SignalParam* param = static_cast<OpenDX_SignalParam*>(user_data);
+            LPDX->winMain_r = (*param->WinMain)(nullptr,nullptr,param->cmdline,0);
+        };
+        g_signal_connect(this->app, "activate", G_CALLBACK(activate), &param);
+        g_application_run (G_APPLICATION (this->app), 0, NULL);
     }
 }
 
