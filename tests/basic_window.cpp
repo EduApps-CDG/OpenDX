@@ -123,8 +123,10 @@ int main(int argc, char* argv[]) {
 }
 
 static void activate(GtkApplication* app, gpointer user_data) {
+    //This is almost exactly what CreateWindow would do. (except for the fact it  makes weird assumptions
+    // in order to be compatible with Win32 api (eg auto creating the application))
+    //REMEMBER: GtkWidget* == HWND
     GtkWidget *window;
-
     window = gtk_application_window_new(app);
     gtk_window_set_title(GTK_WINDOW(window), ODX_APP_NAME);
     gtk_window_set_default_size(GTK_WINDOW(window), 640, 480);
