@@ -1,6 +1,7 @@
 #include <config.hpp>
 #include <opendx.h>
 #include "../idirect3d9.hpp"
+#include "cairo.h"
 #include "gtk/gtk.h"
 #include "idirect3d9.hpp"
 #include <drm/drm.h>
@@ -212,6 +213,24 @@ export IDirect3DDevice9* IDirect3D9_i915::createDevice(
     // save_to_ppm("framebuffer.ppm", framebuffer, create_req.width, create_req.height, create_req.pitch);
     // munmap(framebuffer, create_req.pitch * create_req.height);
 
+    //experiment: set master if config allows it
+    #ifdef DEBUG
+        //if tty, force master
+        const char* term = std::getenv("TERM");
+        if (term != nullptr && strcmp(term, "linux") == 0) {
+            DLOG("  Setting DRM master (experimental)");
+            if (drmSetMaster(fd) != 0) {
+                std::cerr << "\033[1;31m" //RED BOLD
+                    << "[IDirect3D9_i915] ODX ERROR: Failed to set DRM master" << std::endl
+                    << "[IDirect3D9_i915] IDirect3DC9::CreateDevice fails and returns NULL.\033[0;0m" << std::endl
+                    << std::endl;
+                // return nullptr;
+            } else {
+                DLOG("  DRM master set");
+            }
+        }
+    #endif
+        
     // drmSetMaster(fd);
 
     //inject framebuffer into HWND (through GdkD3DContext)
@@ -253,7 +272,7 @@ static void on_drawing_area_realize(GtkWidget *widget, gpointer user_data) {
     gtk_drawing_area_set_draw_func(
         GTK_DRAWING_AREA(widget),
         draw_function,
-        &framebuffer,
+        framebuffer,
         NULL
     );
     // gdk_draw_context_begin_draw(GDK_DRAW_CONTEXT(context), nullptr);
@@ -261,18 +280,18 @@ static void on_drawing_area_realize(GtkWidget *widget, gpointer user_data) {
 }
 
 static void draw_function(GtkDrawingArea *area, cairo_t *cr, int width, int height, gpointer user_data) {
-    
-    DLOG("libopendx.so: gdk_d3d_context_draw(): Drawing framebuffer to widget");
-    uint32_t* framebuffer = *(uint32_t**)user_data;
+
+    DLOG("d3d9_i915.so: draw_function(): Drawing framebuffer to widget");
+    uint32_t* framebuffer = (uint32_t*)user_data;
     if (framebuffer == nullptr) {
-        DLOG("libopendx.so: gdk_d3d_context_draw(): No framebuffer set, skipping draw");
+        DLOG("d3d9_i915.so: draw_function(): No framebuffer set, skipping draw");
         return;
     }
 
     cairo_surface_t *cairo_surface =
         cairo_image_surface_create_for_data(
             (unsigned char*)framebuffer,
-            CAIRO_FORMAT_ARGB32,
+            CAIRO_FORMAT_RGB24,
             width,
             height,
             width * 4 // pitch (bytes per row)
