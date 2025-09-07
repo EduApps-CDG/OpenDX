@@ -21,9 +21,6 @@ export IDirect3D9::IDirect3D9(UINT SDKVersion) {
 	OpenDX* odx = OpenDX::getInstance();
 	OpenDX_Device odxDevice = odx->getDevice(D3DADAPTER_DEFAULT);
 	int fd = odxDevice.fd;
-	std::string card = OpenDX_Config.preferred_card.value;
-
-    DLOG("  Using card: " << card);
 
 	if (fd < 0) {
 		std::cerr << "\033[1;31m" //RED BOLD
